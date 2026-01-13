@@ -1,17 +1,56 @@
 import { motion } from "framer-motion";
 import groomImage from "@/assets/groom.jpg";
 import brideImage from "@/assets/bride.jpg";
+import TiltCard from "./TiltCard";
+import { PaisleyPattern } from "./AnimatedPatterns";
 
 const CoupleSection = () => {
   return (
     <section className="section-padding bg-cream relative overflow-hidden">
-      {/* Gold Blur Orbs - Decorative Elements */}
-      <div className="absolute top-10 left-10 w-48 h-48 bg-gold/8 rounded-full blur-3xl" />
-      <div className="absolute top-20 right-16 w-56 h-56 bg-gold/6 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-0 w-40 h-40 bg-gold/10 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 right-0 w-52 h-52 bg-gold/7 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-16 w-44 h-44 bg-gold/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-48 h-48 bg-gold/6 rounded-full blur-3xl" />
+      {/* Animated Paisley Background Pattern */}
+      <div className="absolute inset-0 pointer-events-none text-gold overflow-hidden">
+        <motion.div
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <PaisleyPattern className="w-64 h-64 -top-20 -left-20 rotate-12" opacity={0.04} />
+          <PaisleyPattern className="w-48 h-48 top-1/3 -right-10 -rotate-45" opacity={0.03} />
+          <PaisleyPattern className="w-56 h-56 -bottom-10 left-1/4 rotate-30" opacity={0.035} />
+        </motion.div>
+      </div>
+
+      {/* Decorative gold blur orbs with pulsing animation */}
+      <motion.div 
+        className="absolute top-10 left-10 w-48 h-48 bg-gold/8 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.12, 0.08] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute top-20 right-16 w-56 h-56 bg-gold/6 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.1, 0.06] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+      <motion.div 
+        className="absolute top-1/2 left-0 w-40 h-40 bg-gold/10 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.3, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+      <motion.div 
+        className="absolute top-1/2 right-0 w-52 h-52 bg-gold/7 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.07, 0.1, 0.07] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+      <motion.div 
+        className="absolute bottom-20 left-16 w-44 h-44 bg-gold/8 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.25, 1] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+      />
+      <motion.div 
+        className="absolute bottom-10 right-10 w-48 h-48 bg-gold/6 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.1, 0.06] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+      />
 
       <div className="max-w-6xl mx-auto relative">
         {/* Section Header */}
@@ -44,7 +83,7 @@ const CoupleSection = () => {
             className="flex flex-col md:flex-row items-center gap-8 md:gap-16"
           >
             <div className="relative md:w-1/2 flex justify-center">
-              <div className="relative inline-block">
+              <TiltCard className="relative inline-block">
                 <div className="image-frame w-64 h-80 md:w-80 md:h-[28rem]">
                   <img
                     src={groomImage}
@@ -57,7 +96,7 @@ const CoupleSection = () => {
                 <div className="ornament-corner top-right -top-3 -right-3" />
                 <div className="ornament-corner bottom-left -bottom-3 -left-3" />
                 <div className="ornament-corner bottom-right -bottom-3 -right-3" />
-              </div>
+              </TiltCard>
             </div>
             
             <div className="md:w-1/2 text-center md:text-left">
@@ -95,7 +134,7 @@ const CoupleSection = () => {
             className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16"
           >
             <div className="relative md:w-1/2 flex justify-center">
-              <div className="relative inline-block">
+              <TiltCard className="relative inline-block">
                 <div className="image-frame w-64 h-80 md:w-80 md:h-[28rem]">
                   <img
                     src={brideImage}
@@ -108,7 +147,7 @@ const CoupleSection = () => {
                 <div className="ornament-corner top-right -top-3 -right-3" />
                 <div className="ornament-corner bottom-left -bottom-3 -left-3" />
                 <div className="ornament-corner bottom-right -bottom-3 -right-3" />
-              </div>
+              </TiltCard>
             </div>
             
             <div className="md:w-1/2 text-center md:text-right">
