@@ -1,5 +1,64 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, PartyPopper, Sparkles, Heart } from "lucide-react";
+import { Calendar, Clock, MapPin, PartyPopper } from "lucide-react";
+
+// Custom Astrology-style ornament SVG component
+const AstroOrnament = ({ className, isTop = true }: { className?: string; isTop?: boolean }) => (
+  <svg 
+    viewBox="0 0 50 80" 
+    className={className}
+    style={{ transform: isTop ? 'none' : 'rotate(180deg)' }}
+  >
+    {/* Glow filter */}
+    <defs>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <linearGradient id="burgundyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8B1538"/>
+        <stop offset="100%" stopColor="#6B0F2A"/>
+      </linearGradient>
+    </defs>
+    
+    {/* Main Circle with burgundy background */}
+    <circle cx="25" cy="20" r="16" fill="url(#burgundyGrad)" stroke="#B8860B" strokeWidth="2"/>
+    
+    {/* 4-pointed star with sparkles */}
+    <g filter="url(#glow)">
+      {/* Main 4-pointed star */}
+      <path 
+        d="M25 8 L27 17 L36 20 L27 23 L25 32 L23 23 L14 20 L23 17 Z" 
+        fill="#B8860B"
+      />
+      {/* Small sparkle dots */}
+      <circle cx="18" cy="13" r="1" fill="#B8860B" opacity="0.8"/>
+      <circle cx="32" cy="13" r="1" fill="#B8860B" opacity="0.8"/>
+      <circle cx="18" cy="27" r="1" fill="#B8860B" opacity="0.6"/>
+      <circle cx="32" cy="27" r="1" fill="#B8860B" opacity="0.6"/>
+    </g>
+    
+    {/* Decorative curved tail/flourish */}
+    <path 
+      d="M25 36 Q25 45 20 52 Q15 58 18 65 Q20 70 25 72" 
+      stroke="#8B1538" 
+      strokeWidth="3" 
+      fill="none"
+      strokeLinecap="round"
+    />
+    <path 
+      d="M25 36 Q25 45 30 52 Q35 58 32 65 Q30 70 25 72" 
+      stroke="#8B1538" 
+      strokeWidth="3" 
+      fill="none"
+      strokeLinecap="round"
+    />
+    {/* Small decorative dot at tail end */}
+    <circle cx="25" cy="74" r="3" fill="#B8860B"/>
+  </svg>
+);
 
 const eventDays = [
   {
@@ -80,46 +139,46 @@ const EventsSection = () => {
 
           {/* Top Ornament - Desktop */}
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring" }}
-            className="hidden md:flex absolute left-1/2 -translate-x-1/2 -top-2 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_20px_rgba(184,134,11,0.5)] z-20 items-center justify-center"
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 -top-10 z-20"
           >
-            <Sparkles className="w-5 h-5 text-burgundy" />
+            <AstroOrnament className="w-14 h-20 drop-shadow-[0_0_8px_rgba(184,134,11,0.4)]" isTop={true} />
           </motion.div>
 
           {/* Top Ornament - Mobile */}
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring" }}
-            className="md:hidden absolute left-3 -top-2 w-8 h-8 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_15px_rgba(184,134,11,0.5)] z-20 flex items-center justify-center"
+            className="md:hidden absolute left-1 -top-8 z-20"
           >
-            <Sparkles className="w-4 h-4 text-burgundy" />
+            <AstroOrnament className="w-10 h-14 drop-shadow-[0_0_6px_rgba(184,134,11,0.4)]" isTop={true} />
           </motion.div>
 
           {/* Bottom Ornament - Desktop */}
           <motion.div
-            initial={{ scale: 0, rotate: 180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
-            className="hidden md:flex absolute left-1/2 -translate-x-1/2 -bottom-2 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_20px_rgba(184,134,11,0.5)] z-20 items-center justify-center"
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-10 z-20"
           >
-            <Heart className="w-5 h-5 text-burgundy fill-burgundy" />
+            <AstroOrnament className="w-14 h-20 drop-shadow-[0_0_8px_rgba(184,134,11,0.4)]" isTop={false} />
           </motion.div>
 
           {/* Bottom Ornament - Mobile */}
           <motion.div
-            initial={{ scale: 0, rotate: 180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
-            className="md:hidden absolute left-3 -bottom-2 w-8 h-8 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_15px_rgba(184,134,11,0.5)] z-20 flex items-center justify-center"
+            className="md:hidden absolute left-1 -bottom-8 z-20"
           >
-            <Heart className="w-4 h-4 text-burgundy fill-burgundy" />
+            <AstroOrnament className="w-10 h-14 drop-shadow-[0_0_6px_rgba(184,134,11,0.4)]" isTop={false} />
           </motion.div>
 
           {/* Event Days */}
