@@ -11,6 +11,7 @@ import FloatingElements from "@/components/wedding/FloatingElements";
 import SplashScreen from "@/components/wedding/SplashScreen";
 import CursorTrail from "@/components/wedding/CursorTrail";
 import WaveTransition from "@/components/wedding/WaveTransition";
+import ThemeToggle from "@/components/wedding/ThemeToggle";
 
 import RangoliDivider from "@/components/wedding/RangoliDivider";
 import MarigoldGarland from "@/components/wedding/MarigoldGarland";
@@ -22,6 +23,9 @@ const Index = () => {
     <>
       {/* Splash Screen */}
       {!showContent && <SplashScreen onComplete={() => setShowContent(true)} />}
+      
+      {/* Theme Toggle */}
+      {showContent && <ThemeToggle />}
       
       {/* Cursor Trail Effect (Desktop only) */}
       {showContent && <CursorTrail />}
