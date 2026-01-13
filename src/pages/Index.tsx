@@ -1,4 +1,3 @@
-import { useState } from "react";
 import HeroSection from "@/components/wedding/HeroSection";
 import CountdownTimer from "@/components/wedding/CountdownTimer";
 import CoupleSection from "@/components/wedding/CoupleSection";
@@ -8,25 +7,16 @@ import VenueSection from "@/components/wedding/VenueSection";
 import ClosingSection from "@/components/wedding/ClosingSection";
 import BackgroundMusic from "@/components/wedding/BackgroundMusic";
 import FloatingElements from "@/components/wedding/FloatingElements";
-import SplashScreen from "@/components/wedding/SplashScreen";
 import CursorTrail from "@/components/wedding/CursorTrail";
 import WaveTransition from "@/components/wedding/WaveTransition";
-
 import RangoliDivider from "@/components/wedding/RangoliDivider";
 import MarigoldGarland from "@/components/wedding/MarigoldGarland";
 
 const Index = () => {
-  const [showContent, setShowContent] = useState(false);
-
   return (
     <>
-      {/* Splash Screen */}
-      {!showContent && <SplashScreen onComplete={() => setShowContent(true)} />}
-      
-      {/* Cursor Trail Effect (Desktop only) */}
-      {showContent && <CursorTrail />}
-
-      <main className={`overflow-hidden transition-opacity duration-500 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+      <CursorTrail />
+      <main className="overflow-hidden">
         <FloatingElements />
         <BackgroundMusic />
         <HeroSection />
