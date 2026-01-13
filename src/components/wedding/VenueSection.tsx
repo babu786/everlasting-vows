@@ -11,7 +11,7 @@ const venues = [
     events: ["गणेश पूजन", "भात", "लगन टीका", "प्रतिबोज", "महिला संगीत", "चाक", "हल्दी"],
     dates: "17, 21-22 जनवरी 2026",
     mapLink: "https://maps.app.goo.gl/pU7wiEuiTCpvaoTR6",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d75.7582537!3d26.9662306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU3JzU4LjQiTiA3NcKwNDUnMjkuNyJF!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1778.5!2d75.7582674!3d26.9662338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db30c01a14f4b%3A0xbdf20d4a38f99707!2sShri%20shyam%20vatika%20marriage%20garden%2C%20murlipura!5e0!3m2!1sen!2sin!4v1704900000000!5m2!1sen!2sin"
   },
   {
     name: "सांगानेर महल गार्डन",
