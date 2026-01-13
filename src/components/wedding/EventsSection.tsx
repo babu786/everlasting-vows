@@ -14,28 +14,28 @@ const SparkleIcon = ({ className }: { className?: string }) => (
 
 const eventDays = [
   {
-    title: "श्री गणेश पूजन",
-    subtitle: "(पीला चावल)",
-    date: "शनिवार, 17 जनवरी 2026",
-    description: "शुभ विवाह समारोह की शुरुआत गणेश पूजन के साथ"
+    title: "Shri Ganesh Pujan",
+    subtitle: "(Peela Chawal)",
+    date: "Saturday, 17 January 2026",
+    description: "Shubh wedding ceremonies ki shuruaat Ganesh Pujan ke saath"
   },
   {
-    title: "बान सगड़ी, बाठ, लगन टीका",
-    subtitle: "प्रतिबोज एवं महिला संगीत",
-    date: "बुधवार, 21 जनवरी 2026",
-    description: "परंपरागत रस्मों और संगीत की मनोहर शाम"
+    title: "Baan Sagdi, Baath, Lagan Tika",
+    subtitle: "Pratibhoj evam Mahila Sangeet",
+    date: "Wednesday, 21 January 2026",
+    description: "Traditional rasmon aur sangeet ki manohar shaam"
   },
   {
-    title: "चक एवं हल्दी",
-    subtitle: "",
-    date: "गुरुवार, 22 जनवरी 2026",
-    description: "हल्दी की रस्म के साथ मंगलमय तैयारियां"
+    title: "Chak evam Haldi",
+    subtitle: "(Haldi Ceremony)",
+    date: "Thursday, 22 January 2026",
+    description: "Haldi ki rasam ke saath mangalmay taiyaariyan"
   },
   {
-    title: "विवाह",
-    subtitle: "पाणिग्रहण संस्कार",
-    date: "शुक्रवार, 23 जनवरी 2026",
-    description: "शुभ लग्न में विवाह संस्कार"
+    title: "Vivah",
+    subtitle: "(Panigrahana Sanskar)",
+    date: "Friday, 23 January 2026",
+    description: "Shubh Lagna mein Vivah Sanskar"
   }
 ];
 
@@ -188,13 +188,13 @@ const EventsSection = () => {
               </div>
               <div>
                 <h4 className="font-display text-xl md:text-2xl text-burgundy font-semibold mb-3">
-                  बारात निकासी
+                  Baraat Nikasi
                 </h4>
                 <p className="text-foreground/80 font-body text-sm md:text-base leading-relaxed">
-                  बारात <span className="text-burgundy font-medium">शुक्रवार, 23 जनवरी 2026</span> को 
-                  <span className="text-gold font-medium"> सायं 5.15 बजे</span> विवाह स्थल से रवाना होकर 
-                  <span className="text-burgundy font-medium"> हाथोज मोड़, सिरसी रोड</span> से सजकर 
-                  <span className="text-burgundy font-medium"> सांगानेर महल गार्डन</span> के लिए प्रस्थान करेगी।
+                  Baraat <span className="text-burgundy font-medium">Friday, 23 January 2026</span> ko 
+                  <span className="text-gold font-medium"> shaam 5:15 baje</span> vivah sthal se rawana hokar 
+                  <span className="text-burgundy font-medium"> Hathoj Mod, Sirsi Road</span> se sajkar 
+                  <span className="text-burgundy font-medium"> Sanganer Mahal Garden</span> ke liye prasthan karegi.
                 </p>
               </div>
             </div>
