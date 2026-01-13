@@ -113,7 +113,7 @@ const EventsSection = () => {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: dayIndex * 0.1, type: "spring" }}
-                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-10 h-10 rounded-full bg-burgundy items-center justify-center z-10 shadow-lg"
+                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-10 w-10 h-10 rounded-full bg-burgundy items-center justify-center z-10 shadow-lg"
                   >
                     <SparkleIcon className="w-5 h-5 text-gold" />
                   </motion.div>
@@ -124,7 +124,7 @@ const EventsSection = () => {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: dayIndex * 0.1, type: "spring" }}
-                    className="md:hidden absolute left-3 top-6 w-8 h-8 rounded-full bg-burgundy flex items-center justify-center z-10 shadow-lg -translate-x-1/2"
+                    className="md:hidden absolute left-3 top-10 w-8 h-8 rounded-full bg-burgundy flex items-center justify-center z-10 shadow-lg -translate-x-1/2"
                   >
                     <SparkleIcon className="w-4 h-4 text-gold" />
                   </motion.div>
@@ -135,7 +135,7 @@ const EventsSection = () => {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
-                    className={`hidden md:block absolute top-10 h-0.5 bg-gold/50 ${
+                    className={`hidden md:block absolute top-14 h-0.5 bg-gold/50 ${
                       isLeft 
                         ? 'right-1/2 w-[80px] origin-right mr-5' 
                         : 'left-1/2 w-[80px] origin-left ml-5'
