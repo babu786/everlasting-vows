@@ -15,7 +15,7 @@ const WaveTransition = ({
 }: WaveTransitionProps) => {
   if (variant === "wave") {
     return (
-      <div className={`relative w-full h-24 md:h-32 overflow-hidden ${flip ? "rotate-180" : ""}`}>
+      <div className="relative w-full h-24 md:h-32 overflow-hidden">
         <motion.svg
           viewBox="0 0 1440 120"
           className="absolute w-full h-full"
@@ -26,32 +26,40 @@ const WaveTransition = ({
           transition={{ duration: 0.5 }}
         >
           <defs>
-            <linearGradient id={`waveGradient-${flip}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient 
+              id={`waveGradient-${flip}`} 
+              x1="0%" 
+              y1={flip ? "100%" : "0%"} 
+              x2="0%" 
+              y2={flip ? "0%" : "100%"}
+            >
               <stop offset="0%" stopColor={fromColor} />
               <stop offset="100%" stopColor={toColor} />
             </linearGradient>
           </defs>
           
-          {/* Animated wave path */}
-          <motion.path
-            d="M0,40 C240,100 480,0 720,50 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"
-            fill={`url(#waveGradient-${flip})`}
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          />
-          
-          {/* Secondary subtle wave */}
-          <motion.path
-            d="M0,60 C360,30 720,90 1080,50 C1260,30 1380,70 1440,50 L1440,120 L0,120 Z"
-            fill={toColor}
-            fillOpacity="0.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 0.5 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, ease: "easeOut", delay: 0.2 }}
-          />
+          {/* Animated wave path - flip via transform, not container rotation */}
+          <g transform={flip ? "translate(0, 120) scale(1, -1)" : undefined}>
+            <motion.path
+              d="M0,40 C240,100 480,0 720,50 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"
+              fill={`url(#waveGradient-${flip})`}
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            />
+            
+            {/* Secondary subtle wave */}
+            <motion.path
+              d="M0,60 C360,30 720,90 1080,50 C1260,30 1380,70 1440,50 L1440,120 L0,120 Z"
+              fill={toColor}
+              fillOpacity="0.5"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.5 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, ease: "easeOut", delay: 0.2 }}
+            />
+          </g>
         </motion.svg>
       </div>
     );
