@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import { WordByWordText, SplitText } from "./TextAnimations";
 
 const ClosingSection = () => {
   // Heart configurations with varied sizes and positions
@@ -71,7 +72,7 @@ const ClosingSection = () => {
             With Gratitude
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory mt-4 font-semibold">
-            Thank You
+            <SplitText text="Thank You" staggerDelay={0.06} />
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6 mb-10">
             <span className="px-4 text-gold-light text-2xl">❧</span>
@@ -85,16 +86,17 @@ const ClosingSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-6"
         >
-          <p className="font-display text-xl md:text-2xl text-ivory/90 italic leading-relaxed">
-            We are truly blessed to have you in our lives. Your presence at our 
-            wedding would be the greatest gift we could receive.
-          </p>
+          <WordByWordText 
+            text="We are truly blessed to have you in our lives. Your presence at our wedding would be the greatest gift we could receive."
+            className="font-display text-xl md:text-2xl text-ivory/90 italic leading-relaxed"
+            staggerDelay={0.06}
+          />
           
-          <p className="text-ivory/70 font-body text-sm leading-relaxed max-w-xl mx-auto">
-            With heartfelt gratitude, we invite you to be a part of our special day 
-            as we embark on this beautiful journey together. Your love and blessings 
-            mean the world to us.
-          </p>
+          <WordByWordText 
+            text="With heartfelt gratitude, we invite you to be a part of our special day as we embark on this beautiful journey together. Your love and blessings mean the world to us."
+            className="text-ivory/70 font-body text-sm leading-relaxed max-w-xl mx-auto"
+            staggerDelay={0.04}
+          />
         </motion.div>
 
         {/* Names */}
@@ -106,12 +108,31 @@ const ClosingSection = () => {
           className="mt-12 pt-8 border-t border-gold/20"
         >
           <p className="font-display text-3xl md:text-4xl text-gold">
-            Tanishk & Ginni
+            <SplitText text="Tanishk & Ginni" staggerDelay={0.05} />
           </p>
           <div className="flex items-center justify-center gap-3 mt-4">
-            <span className="w-12 h-px bg-gold/40" />
-            <Heart className="w-5 h-5 text-gold fill-gold" />
-            <span className="w-12 h-px bg-gold/40" />
+            <motion.span 
+              className="w-12 h-px bg-gold/40"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            />
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
+            >
+              <Heart className="w-5 h-5 text-gold fill-gold" />
+            </motion.div>
+            <motion.span 
+              className="w-12 h-px bg-gold/40"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            />
           </div>
         </motion.div>
 

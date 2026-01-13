@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import blessingsBg from "@/assets/blessings-bg.jpg";
 import { AnimatedDiya } from "./AnimatedPatterns";
+import { TypewriterText, SplitText } from "./TextAnimations";
 
 const BlessingsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -41,7 +42,7 @@ const BlessingsSection = () => {
             With Blessings
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory mt-4 font-semibold">
-            Family Blessings
+            <SplitText text="Family Blessings" staggerDelay={0.04} />
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6 mb-12">
             <span className="px-4 text-gold-light text-2xl">❧</span>
@@ -55,31 +56,45 @@ const BlessingsSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          {/* Quote with animated quote marks */}
+          {/* Quote with typewriter effect */}
           <div className="relative">
             <motion.span 
               className="absolute -top-8 left-1/2 -translate-x-1/2 text-6xl text-gold/30 font-display"
-              animate={{ y: [0, -5, 0], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 0.3, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
               "
             </motion.span>
             <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl text-ivory/95 italic leading-relaxed">
-              May your love for each other grow stronger with each passing day. 
-              May your home be filled with laughter, warmth, and endless blessings.
+              <TypewriterText 
+                text="May your love for each other grow stronger with each passing day. May your home be filled with laughter, warmth, and endless blessings."
+                speed={35}
+                showCursor={true}
+                delay={500}
+              />
             </blockquote>
             <motion.span 
               className="absolute -bottom-4 right-1/4 text-6xl text-gold/30 font-display"
-              animate={{ y: [0, -5, 0], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 0.3, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 3.5 }}
             >
               "
             </motion.span>
           </div>
 
-          <p className="text-gold-light font-body text-sm tracking-wide mt-8">
+          <motion.p 
+            className="text-gold-light font-body text-sm tracking-wide mt-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 4 }}
+          >
             — With love from both families
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Simple Animated Dots */}

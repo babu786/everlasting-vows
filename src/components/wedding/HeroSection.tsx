@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { PaisleyPattern, GoldParticles } from "./AnimatedPatterns";
+import { SplitText } from "./TextAnimations";
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -63,30 +64,47 @@ const HeroSection = () => {
           </span>
         </motion.div>
 
-        {/* Names */}
+        {/* Names with SplitText animation */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy mb-2">
-            Tanishk
+            <SplitText text="Tanishk" staggerDelay={0.05} />
           </h1>
           <div className="flex items-center justify-center gap-4 my-4">
-            <span className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-            <span className="font-display text-3xl md:text-4xl text-gold italic">&</span>
-            <span className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+            <motion.span 
+              className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            />
+            <motion.span 
+              className="font-display text-3xl md:text-4xl text-gold italic"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
+            >
+              &
+            </motion.span>
+            <motion.span 
+              className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            />
           </div>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy">
-            Ginni
+            <SplitText text="Ginni" staggerDelay={0.05} />
           </h1>
         </motion.div>
 
         {/* Tagline */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
           className="font-display text-xl md:text-2xl text-burgundy-light italic mt-8 mb-10"
         >
           "Two souls, one journey"
@@ -96,7 +114,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
           className="inline-block"
         >
           <div className="bg-burgundy/90 backdrop-blur-sm px-8 md:px-12 py-4 md:py-6 rounded-lg shadow-elegant">

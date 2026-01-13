@@ -6,6 +6,7 @@ interface RangoliDividerProps {
 
 const RangoliDivider = ({ variant = "gold" }: RangoliDividerProps) => {
   const colorClass = variant === "gold" ? "text-gold" : "text-burgundy";
+  const lineColor = variant === "gold" ? "hsl(var(--gold))" : "hsl(var(--burgundy))";
   
   return (
     <div className="relative py-8 overflow-hidden">
@@ -16,13 +17,16 @@ const RangoliDivider = ({ variant = "gold" }: RangoliDividerProps) => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Left decorative line */}
+        {/* Left decorative line with draw effect */}
         <motion.div 
-          className={`h-px bg-gradient-to-r from-transparent via-${variant === "gold" ? "gold" : "burgundy"}/50 to-${variant === "gold" ? "gold" : "burgundy"} w-16 md:w-32`}
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+          className="h-px w-16 md:w-32 origin-right"
+          style={{
+            background: `linear-gradient(to right, transparent, ${lineColor}50, ${lineColor})`
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         />
         
         {/* Central Rangoli Pattern */}
@@ -136,13 +140,16 @@ const RangoliDivider = ({ variant = "gold" }: RangoliDividerProps) => {
           ))}
         </motion.svg>
         
-        {/* Right decorative line */}
+        {/* Right decorative line with draw effect */}
         <motion.div 
-          className={`h-px bg-gradient-to-l from-transparent via-${variant === "gold" ? "gold" : "burgundy"}/50 to-${variant === "gold" ? "gold" : "burgundy"} w-16 md:w-32`}
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+          className="h-px w-16 md:w-32 origin-left"
+          style={{
+            background: `linear-gradient(to left, transparent, ${lineColor}50, ${lineColor})`
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         />
       </motion.div>
     </div>
