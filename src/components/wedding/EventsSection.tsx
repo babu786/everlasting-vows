@@ -111,7 +111,7 @@ const EventsSection = () => {
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
             Auspicious Occasions
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy dark:text-gold mt-4 font-semibold">
             Wedding Ceremonies
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
@@ -122,10 +122,10 @@ const EventsSection = () => {
         {/* Vertical Timeline - Centered with Alternating Cards */}
         <div className="relative max-w-5xl mx-auto pb-8">
           {/* Timeline Line - Centered (hidden on mobile, visible on md+) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/60 to-gold/30" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/60 to-gold/30 dark:shadow-[0_0_10px_rgba(218,165,32,0.3)]" />
           
           {/* Timeline Line - Left aligned for mobile */}
-          <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/60 to-gold/30" />
+          <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/60 to-gold/30 dark:shadow-[0_0_10px_rgba(218,165,32,0.3)]" />
 
           {/* Event Days */}
           <div className="space-y-12 md:space-y-16">
@@ -183,9 +183,9 @@ const EventsSection = () => {
                     }`}
                   >
                     {/* Card with 3D Tilt */}
-                    <TiltCard className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 text-left">
+                    <TiltCard className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 dark:border-gold/20 dark:shadow-[0_0_20px_rgba(218,165,32,0.08)] text-left">
                       {/* Event Title */}
-                      <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold leading-tight">
+                      <h3 className="font-display text-2xl md:text-3xl text-burgundy dark:text-gold font-semibold leading-tight">
                         {day.title}
                       </h3>
                       
@@ -214,7 +214,7 @@ const EventsSection = () => {
                                 <Clock className="w-3.5 h-3.5 text-gold" />
                                 <span className="text-xs font-body">
                                   <span className="text-foreground/70">{timing.event}:</span>
-                                  <span className="text-burgundy font-medium ml-1">{timing.time}</span>
+                                  <span className="text-burgundy dark:text-gold font-medium ml-1">{timing.time}</span>
                                 </span>
                               </div>
                             ))}
@@ -254,7 +254,7 @@ const EventsSection = () => {
                 <PartyPopper className="w-6 h-6 text-burgundy" />
               </div>
               <div>
-                <h4 className="font-display text-xl md:text-2xl text-burgundy font-semibold mb-3">
+                <h4 className="font-display text-xl md:text-2xl text-burgundy dark:text-gold font-semibold mb-3">
                   बारात निकासी
                 </h4>
                 <p className="text-foreground/80 font-body text-sm md:text-base leading-relaxed">
