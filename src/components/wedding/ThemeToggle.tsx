@@ -18,7 +18,7 @@ const ThemeToggle = () => {
   return (
     <motion.button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-card/90 backdrop-blur-md border border-gold/40 shadow-elegant hover:shadow-glow transition-shadow"
+      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-burgundy dark:bg-card/90 backdrop-blur-md border-2 border-gold/60 shadow-glow hover:border-gold transition-all duration-300"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
