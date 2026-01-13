@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const WEDDING_DATE = new Date("2026-01-23T00:00:00");
 
@@ -9,6 +9,95 @@ interface TimeLeft {
   minutes: number;
   seconds: number;
 }
+
+// Flip Card Component for individual digits
+const FlipCard = ({ digit, label }: { digit: string; label: string }) => {
+  const [displayDigit, setDisplayDigit] = useState(digit);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const prevDigit = useRef(digit);
+
+  useEffect(() => {
+    if (digit !== prevDigit.current) {
+      setIsFlipping(true);
+      const timer = setTimeout(() => {
+        setDisplayDigit(digit);
+        setIsFlipping(false);
+        prevDigit.current = digit;
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [digit]);
+
+  return (
+    <div className="relative" style={{ perspective: "400px" }}>
+      <div className="relative w-full h-16 md:h-24 lg:h-28">
+        {/* Top Half (Static) */}
+        <div className="absolute inset-x-0 top-0 h-1/2 bg-burgundy rounded-t-lg overflow-hidden border-b border-burgundy-light/20">
+          <div className="absolute inset-0 flex items-end justify-center pb-0">
+            <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none translate-y-1/2">
+              {displayDigit}
+            </span>
+          </div>
+        </div>
+
+        {/* Bottom Half (Static) */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-burgundy/90 rounded-b-lg overflow-hidden">
+          <div className="absolute inset-0 flex items-start justify-center pt-0">
+            <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none -translate-y-1/2">
+              {displayDigit}
+            </span>
+          </div>
+        </div>
+
+        {/* Flip Animation */}
+        <AnimatePresence>
+          {isFlipping && (
+            <>
+              {/* Top flipping down */}
+              <motion.div
+                className="absolute inset-x-0 top-0 h-1/2 bg-burgundy rounded-t-lg overflow-hidden origin-bottom"
+                initial={{ rotateX: 0 }}
+                animate={{ rotateX: -90 }}
+                exit={{ rotateX: -90 }}
+                transition={{ duration: 0.3, ease: "easeIn" }}
+                style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
+              >
+                <div className="absolute inset-0 flex items-end justify-center pb-0">
+                  <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none translate-y-1/2">
+                    {prevDigit.current}
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Bottom flipping up to reveal new number */}
+              <motion.div
+                className="absolute inset-x-0 bottom-0 h-1/2 bg-burgundy/90 rounded-b-lg overflow-hidden origin-top"
+                initial={{ rotateX: 90 }}
+                animate={{ rotateX: 0 }}
+                exit={{ rotateX: 0 }}
+                transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+                style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
+              >
+                <div className="absolute inset-0 flex items-start justify-center pt-0">
+                  <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none -translate-y-1/2">
+                    {digit}
+                  </span>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Center line */}
+        <div className="absolute inset-x-0 top-1/2 h-px bg-burgundy-light/30 z-10" />
+        
+        {/* Side notches */}
+        <div className="absolute left-0 top-1/2 w-1 h-2 bg-cream rounded-r -translate-y-1/2" />
+        <div className="absolute right-0 top-1/2 w-1 h-2 bg-cream rounded-l -translate-y-1/2" />
+      </div>
+    </div>
+  );
+};
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
@@ -47,19 +136,19 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-ivory to-cream relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-gradient-to-b from-ivory to-cream relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-1/4 w-32 h-32 bg-gold/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-rose/20 rounded-full blur-3xl" />
 
-      <div className="max-w-4xl mx-auto px-4 relative">
+      <div className="max-w-5xl mx-auto px-4 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
             Counting Down To
@@ -69,8 +158,8 @@ const CountdownTimer = () => {
           </h3>
         </motion.div>
 
-        {/* Countdown Boxes */}
-        <div className="grid grid-cols-4 gap-3 md:gap-6">
+        {/* Flip Clock Countdown */}
+        <div className="grid grid-cols-4 gap-2 md:gap-6 lg:gap-8">
           {timeUnits.map((unit, index) => (
             <motion.div
               key={unit.label}
@@ -78,34 +167,27 @@ const CountdownTimer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              className="text-center"
             >
-              <div className="bg-background/80 backdrop-blur-sm border-2 border-gold/30 rounded-lg p-3 md:p-6 text-center shadow-elegant">
-                {/* Number */}
-                <motion.div
-                  key={unit.value}
-                  initial={{ scale: 1.1, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="font-display text-3xl md:text-5xl lg:text-6xl text-burgundy font-bold"
-                >
-                  {String(unit.value).padStart(2, "0")}
-                </motion.div>
-                
-                {/* Label */}
-                <p className="text-muted-foreground font-body text-xs md:text-sm mt-2 tracking-wide uppercase">
-                  {unit.label}
-                </p>
-                <p className="text-gold text-xs font-body hidden md:block">
-                  {unit.labelHi}
-                </p>
+              {/* Flip Cards Container */}
+              <div className="flex justify-center gap-1 md:gap-2 mb-3">
+                <FlipCard 
+                  digit={String(unit.value).padStart(2, "0")[0]} 
+                  label={unit.label} 
+                />
+                <FlipCard 
+                  digit={String(unit.value).padStart(2, "0")[1]} 
+                  label={unit.label} 
+                />
               </div>
-
-              {/* Decorative corner accents */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-gold/50 rounded-tl-sm" />
-              <div className="absolute top-0 right-0 w-3 h-3 border-r-2 border-t-2 border-gold/50 rounded-tr-sm" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-l-2 border-b-2 border-gold/50 rounded-bl-sm" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-gold/50 rounded-br-sm" />
+              
+              {/* Label */}
+              <p className="text-burgundy font-body text-xs md:text-sm tracking-wide uppercase font-medium">
+                {unit.label}
+              </p>
+              <p className="text-gold text-xs font-body">
+                {unit.labelHi}
+              </p>
             </motion.div>
           ))}
         </div>
