@@ -1,98 +1,41 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, PartyPopper } from "lucide-react";
+import { Calendar, PartyPopper } from "lucide-react";
 
-// Custom Astrology-style ornament SVG component
-const AstroOrnament = ({ className, isTop = true }: { className?: string; isTop?: boolean }) => (
-  <svg 
-    viewBox="0 0 50 80" 
-    className={className}
-    style={{ transform: isTop ? 'none' : 'rotate(180deg)' }}
-  >
-    {/* Glow filter */}
-    <defs>
-      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-      <linearGradient id="burgundyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#8B1538"/>
-        <stop offset="100%" stopColor="#6B0F2A"/>
-      </linearGradient>
-    </defs>
-    
-    {/* Main Circle with burgundy background */}
-    <circle cx="25" cy="20" r="16" fill="url(#burgundyGrad)" stroke="#B8860B" strokeWidth="2"/>
-    
-    {/* 4-pointed star with sparkles */}
-    <g filter="url(#glow)">
-      {/* Main 4-pointed star */}
-      <path 
-        d="M25 8 L27 17 L36 20 L27 23 L25 32 L23 23 L14 20 L23 17 Z" 
-        fill="#B8860B"
-      />
-      {/* Small sparkle dots */}
-      <circle cx="18" cy="13" r="1" fill="#B8860B" opacity="0.8"/>
-      <circle cx="32" cy="13" r="1" fill="#B8860B" opacity="0.8"/>
-      <circle cx="18" cy="27" r="1" fill="#B8860B" opacity="0.6"/>
-      <circle cx="32" cy="27" r="1" fill="#B8860B" opacity="0.6"/>
-    </g>
-    
-    {/* Decorative curved tail/flourish */}
-    <path 
-      d="M25 36 Q25 45 20 52 Q15 58 18 65 Q20 70 25 72" 
-      stroke="#8B1538" 
-      strokeWidth="3" 
-      fill="none"
-      strokeLinecap="round"
-    />
-    <path 
-      d="M25 36 Q25 45 30 52 Q35 58 32 65 Q30 70 25 72" 
-      stroke="#8B1538" 
-      strokeWidth="3" 
-      fill="none"
-      strokeLinecap="round"
-    />
-    {/* Small decorative dot at tail end */}
-    <circle cx="25" cy="74" r="3" fill="#B8860B"/>
+// Sparkle star icon for timeline nodes
+const SparkleIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z" />
+    <circle cx="18" cy="5" r="1" opacity="0.6" />
+    <circle cx="6" cy="5" r="1" opacity="0.6" />
+    <circle cx="18" cy="15" r="0.8" opacity="0.4" />
+    <circle cx="6" cy="15" r="0.8" opacity="0.4" />
   </svg>
 );
 
 const eventDays = [
   {
+    title: "श्री गणेश पूजन",
+    subtitle: "(पीला चावल)",
     date: "शनिवार, 17 जनवरी 2026",
-    venue: "श्याम वाटिका",
-    events: [
-      { name: "श्री गणेश पूजन (पीला चावल)", time: "प्रातः 8.30 बजे" }
-    ]
+    description: "शुभ विवाह समारोह की शुरुआत गणेश पूजन के साथ"
   },
   {
+    title: "बान सगड़ी, बाठ, लगन टीका",
+    subtitle: "प्रतिबोज एवं महिला संगीत",
     date: "बुधवार, 21 जनवरी 2026",
-    venue: "श्याम वाटिका",
-    events: [
-      { name: "भात", time: "प्रातः 8.15 बजे" },
-      { name: "लगन टीका", time: "प्रातः 10.00 बजे" },
-      { name: "प्रतिबोज", time: "दोपहर 12.15 बजे" },
-      { name: "महिला संगीत", time: "सायं 6.00 बजे" }
-    ]
+    description: "परंपरागत रस्मों और संगीत की मनोहर शाम"
   },
   {
+    title: "चक एवं हल्दी",
+    subtitle: "",
     date: "गुरुवार, 22 जनवरी 2026",
-    venue: "श्याम वाटिका",
-    events: [
-      { name: "चाक", time: "प्रातः 10.00 बजे" },
-      { name: "हल्दी", time: "दोपहर 1.15 बजे" }
-    ]
+    description: "हल्दी की रस्म के साथ मंगलमय तैयारियां"
   },
   {
+    title: "विवाह",
+    subtitle: "पाणिग्रहण संस्कार",
     date: "शुक्रवार, 23 जनवरी 2026",
-    venue: "सांगानेर महल गार्डन",
-    events: [
-      { name: "निकासी", time: "सायं 4.30 बजे" },
-      { name: "पाणिग्रहण संस्कार", time: "रात्रि शुभ लग्नानुसार" }
-    ]
+    description: "शुभ लग्न में विवाह संस्कार"
   }
 ];
 
@@ -122,7 +65,7 @@ const EventsSection = () => {
             शुभ मुहूर्त
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
-            वैवाहिक कार्यक्रम
+            विवाह समारोह
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
             <span className="px-4 text-gold text-2xl">❧</span>
@@ -130,144 +73,95 @@ const EventsSection = () => {
         </motion.div>
 
         {/* Vertical Timeline - Centered with Alternating Cards */}
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto pb-8">
           {/* Timeline Line - Centered (hidden on mobile, visible on md+) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/60 to-gold/30" />
           
           {/* Timeline Line - Left aligned for mobile */}
-          <div className="md:hidden absolute left-5 top-10 bottom-10 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
-
-          {/* Top Ornament - Desktop */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="hidden md:block absolute left-1/2 -translate-x-1/2 -top-10 z-20"
-          >
-            <AstroOrnament className="w-14 h-20 drop-shadow-[0_0_8px_rgba(184,134,11,0.4)]" isTop={true} />
-          </motion.div>
-
-          {/* Top Ornament - Mobile */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="md:hidden absolute left-1 -top-8 z-20"
-          >
-            <AstroOrnament className="w-10 h-14 drop-shadow-[0_0_6px_rgba(184,134,11,0.4)]" isTop={true} />
-          </motion.div>
-
-          {/* Bottom Ornament - Desktop */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
-            className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-10 z-20"
-          >
-            <AstroOrnament className="w-14 h-20 drop-shadow-[0_0_8px_rgba(184,134,11,0.4)]" isTop={false} />
-          </motion.div>
-
-          {/* Bottom Ornament - Mobile */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
-            className="md:hidden absolute left-1 -bottom-8 z-20"
-          >
-            <AstroOrnament className="w-10 h-14 drop-shadow-[0_0_6px_rgba(184,134,11,0.4)]" isTop={false} />
-          </motion.div>
+          <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/60 to-gold/30" />
 
           {/* Event Days */}
-          <div className="space-y-6 md:space-y-8">
+          <div className="space-y-12 md:space-y-16">
             {eventDays.map((day, dayIndex) => {
               const isLeft = dayIndex % 2 === 0;
               
               return (
-                <motion.div
+                <div
                   key={day.date}
-                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: dayIndex * 0.1 }}
-                  className={`relative pl-12 md:pl-0 md:flex ${isLeft ? 'md:justify-start md:pr-[52%]' : 'md:justify-end md:pl-[52%]'}`}
+                  className="relative"
                 >
-                  {/* Timeline Node - Mobile (left aligned) */}
+                  {/* Timeline Node with Sparkle - Desktop (centered) */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
-                    className="md:hidden absolute left-3 top-5 w-4 h-4 rounded-full bg-gold border-2 border-burgundy shadow-[0_0_10px_rgba(184,134,11,0.4)] z-10"
+                    transition={{ duration: 0.4, delay: dayIndex * 0.1, type: "spring" }}
+                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-10 h-10 rounded-full bg-burgundy items-center justify-center z-10 shadow-lg"
                   >
-                    <div className="absolute inset-1 rounded-full bg-burgundy" />
+                    <SparkleIcon className="w-5 h-5 text-gold" />
                   </motion.div>
 
-                  {/* Timeline Node - Desktop (centered) */}
+                  {/* Timeline Node with Sparkle - Mobile (left aligned) */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
-                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-5 w-5 h-5 rounded-full bg-gold border-2 border-burgundy shadow-[0_0_12px_rgba(184,134,11,0.5)] z-10 items-center justify-center"
+                    transition={{ duration: 0.4, delay: dayIndex * 0.1, type: "spring" }}
+                    className="md:hidden absolute left-3 top-6 w-8 h-8 rounded-full bg-burgundy flex items-center justify-center z-10 shadow-lg -translate-x-1/2"
                   >
-                    <div className="w-2 h-2 rounded-full bg-burgundy" />
+                    <SparkleIcon className="w-4 h-4 text-gold" />
                   </motion.div>
 
-                  {/* Connector Line - Desktop only */}
-                  <div 
-                    className={`hidden md:block absolute top-7 w-6 h-0.5 bg-gold/40 ${
-                      isLeft ? 'right-[48%]' : 'left-[48%]'
+                  {/* Horizontal Connector Line - Desktop only */}
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
+                    className={`hidden md:block absolute top-10 h-0.5 bg-gold/50 ${
+                      isLeft 
+                        ? 'right-1/2 w-[80px] origin-right mr-5' 
+                        : 'left-1/2 w-[80px] origin-left ml-5'
                     }`}
                   />
 
-                  {/* Card */}
-                  <div className="card-elegant p-4 md:p-5 w-full">
-                    {/* Date Header */}
-                    <div className="flex items-center gap-2.5 mb-3 pb-3 border-b border-gold/15">
-                      <div className="w-9 h-9 bg-burgundy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Calendar className="w-4 h-4 text-burgundy" />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="font-display text-lg md:text-xl text-burgundy font-semibold leading-tight">
-                          {day.date}
-                        </h3>
-                        <div className="flex items-center gap-1 text-muted-foreground text-xs mt-0.5">
-                          <MapPin className="w-3 h-3 text-gold flex-shrink-0" />
-                          <span className="truncate">{day.venue}</span>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Card Container */}
+                  <motion.div
+                    initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: dayIndex * 0.1 + 0.1 }}
+                    className={`relative pl-14 md:pl-0 md:w-[45%] ${
+                      isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
+                    }`}
+                  >
+                    {/* Card */}
+                    <div className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 text-center">
+                      {/* Event Title */}
+                      <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold leading-tight">
+                        {day.title}
+                      </h3>
+                      
+                      {/* Subtitle */}
+                      {day.subtitle && (
+                        <p className="text-gold font-body text-sm md:text-base mt-1">
+                          {day.subtitle}
+                        </p>
+                      )}
 
-                    {/* Events List */}
-                    <div className="space-y-2.5">
-                      {day.events.map((event, eventIndex) => (
-                        <motion.div
-                          key={event.name}
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.3, delay: dayIndex * 0.1 + eventIndex * 0.05 }}
-                          className="flex items-center gap-3 group"
-                        >
-                          <div className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 group-hover:scale-150 transition-transform" />
-                          <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
-                            <h4 className="font-display text-base text-foreground font-medium truncate">
-                              {event.name}
-                            </h4>
-                            <div className="flex items-center gap-1 text-gold text-sm flex-shrink-0">
-                              <Clock className="w-3 h-3" />
-                              <span className="font-body">{event.time}</span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
+                      {/* Date with Calendar Icon */}
+                      <div className="flex items-center justify-center gap-2 mt-4 text-muted-foreground">
+                        <Calendar className="w-4 h-4 text-gold" />
+                        <span className="font-body text-sm">{day.date}</span>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-foreground/70 font-body text-sm mt-4 leading-relaxed">
+                        {day.description}
+                      </p>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </div>
               );
             })}
           </div>
