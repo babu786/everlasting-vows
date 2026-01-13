@@ -2,39 +2,60 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
 const ClosingSection = () => {
+  // Heart configurations with varied sizes and positions
+  const hearts = [
+    { left: "8%", top: "15%", size: "w-6 h-6", delay: 0 },
+    { left: "22%", top: "35%", size: "w-10 h-10", delay: 0.5 },
+    { left: "35%", top: "20%", size: "w-8 h-8", delay: 1 },
+    { left: "50%", top: "45%", size: "w-7 h-7", delay: 1.5 },
+    { left: "65%", top: "25%", size: "w-12 h-12", delay: 2 },
+    { left: "78%", top: "40%", size: "w-9 h-9", delay: 2.5 },
+    { left: "88%", top: "18%", size: "w-6 h-6", delay: 3 },
+    { left: "15%", top: "60%", size: "w-8 h-8", delay: 0.8 },
+    { left: "75%", top: "65%", size: "w-10 h-10", delay: 1.8 },
+    { left: "45%", top: "70%", size: "w-7 h-7", delay: 2.2 },
+  ];
+
   return (
     <section className="section-padding bg-burgundy relative overflow-hidden">
-      {/* Decorative Pattern */}
+      {/* Circle Pattern Background */}
       <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="circlePattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="25" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="30" cy="30" r="18" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="30" cy="30" r="10" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="30" cy="30" r="3" fill="white" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#circlePattern)" />
+        </svg>
       </div>
 
       {/* Floating Hearts */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(5)].map((_, i) => (
+        {hearts.map((heart, i) => (
           <motion.div
             key={i}
-            className="absolute text-gold/20"
+            className={`absolute text-gold/25 ${heart.size}`}
             style={{
-              left: `${15 + i * 18}%`,
-              top: `${20 + (i % 3) * 25}%`,
+              left: heart.left,
+              top: heart.top,
             }}
             animate={{
-              y: [0, -20, 0],
-              rotate: [0, 10, -10, 0],
+              y: [0, -25, 0],
+              rotate: [0, 8, -8, 0],
+              scale: [1, 1.1, 1],
             }}
             transition={{
-              duration: 5 + i,
+              duration: 4 + i * 0.3,
               repeat: Infinity,
-              delay: i * 0.5,
+              delay: heart.delay,
+              ease: "easeInOut",
             }}
           >
-            <Heart className="w-8 h-8 fill-current" />
+            <Heart className="w-full h-full fill-current" />
           </motion.div>
         ))}
       </div>

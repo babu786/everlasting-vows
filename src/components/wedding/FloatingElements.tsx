@@ -1,51 +1,30 @@
 import { motion } from "framer-motion";
 
 const FloatingElements = () => {
-  // Mixed flower petals - cherry blossoms, marigolds, and lotus
-  const petals = Array.from({ length: 10 }, (_, i) => ({
+  // Cherry blossom petals only
+  const petals = Array.from({ length: 8 }, (_, i) => ({
     id: i,
-    left: `${Math.random() * 100}%`,
+    left: `${10 + Math.random() * 80}%`,
     delay: Math.random() * 5,
-    duration: 8 + Math.random() * 4,
-    size: 10 + Math.random() * 15,
-    type: i % 3 === 0 ? "marigold" : i % 3 === 1 ? "lotus" : "blossom",
+    duration: 10 + Math.random() * 5,
+    size: 12 + Math.random() * 10,
   }));
 
-  // Peacock feather configuration
-  const feathers = [
-    { id: 1, left: "15%", delay: 2 },
-    { id: 2, left: "85%", delay: 7 },
-  ];
-
-  const getPetalEmoji = (type: string) => {
-    switch (type) {
-      case "marigold":
-        return "🌼";
-      case "lotus":
-        return "🪷";
-      default:
-        return "🌸";
-    }
-  };
-
-  // Diyas configuration
+  // Diyas configuration - 4 corners
   const diyas = [
     { id: 1, left: "5%", top: "20%", delay: 0 },
-    { id: 2, right: "8%", top: "40%", delay: 1.5 },
-    { id: 3, left: "10%", bottom: "30%", delay: 0.8 },
-    { id: 4, right: "5%", bottom: "20%", delay: 2 },
+    { id: 2, right: "5%", top: "35%", delay: 1.5 },
+    { id: 3, left: "8%", bottom: "35%", delay: 0.8 },
+    { id: 4, right: "8%", bottom: "20%", delay: 2 },
   ];
 
   return (
     <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-      {/* Floating Flower Petals - Mixed varieties */}
+      {/* Floating Cherry Blossom Petals */}
       {petals.map((petal) => (
         <motion.div
           key={petal.id}
-          className={`absolute opacity-60 ${
-            petal.type === "marigold" ? "text-amber-500" : 
-            petal.type === "lotus" ? "text-pink-400" : "text-rose"
-          }`}
+          className="absolute text-rose opacity-70"
           style={{
             left: petal.left,
             fontSize: petal.size,
@@ -54,7 +33,7 @@ const FloatingElements = () => {
           animate={{
             top: "105%",
             rotate: 360,
-            x: [0, 30, -30, 0],
+            x: [0, 25, -25, 0],
           }}
           transition={{
             duration: petal.duration,
@@ -68,35 +47,7 @@ const FloatingElements = () => {
             },
           }}
         >
-          {getPetalEmoji(petal.type)}
-        </motion.div>
-      ))}
-
-      {/* Floating Peacock Feathers */}
-      {feathers.map((feather) => (
-        <motion.div
-          key={`feather-${feather.id}`}
-          className="absolute text-2xl md:text-3xl opacity-40"
-          style={{ left: feather.left }}
-          initial={{ top: "-10%", rotate: -20 }}
-          animate={{
-            top: "110%",
-            rotate: [-20, 20, -20],
-            x: [0, 20, -20, 0],
-          }}
-          transition={{
-            duration: 15,
-            delay: feather.delay,
-            repeat: Infinity,
-            ease: "linear",
-            rotate: {
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-        >
-          🪶
+          🌸
         </motion.div>
       ))}
 

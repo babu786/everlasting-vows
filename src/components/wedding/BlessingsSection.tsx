@@ -56,20 +56,29 @@ const BlessingsSection = () => {
           </p>
         </motion.div>
 
-        {/* Decorative elements */}
+        {/* Simple Animated Dots */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-16 flex justify-center gap-4"
+          className="mt-16 flex justify-center items-center gap-3"
         >
-          {[...Array(3)].map((_, i) => (
+          {[...Array(7)].map((_, i) => (
             <motion.div
               key={i}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
-              className="w-2 h-2 rounded-full bg-gold/60"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ 
+                duration: 2.5 + i * 0.2, 
+                repeat: Infinity, 
+                delay: i * 0.15,
+                ease: "easeInOut"
+              }}
+              className="rounded-full bg-gold/70 shadow-[0_0_8px_rgba(184,134,11,0.4)]"
+              style={{
+                width: i % 2 === 0 ? 8 : 10,
+                height: i % 2 === 0 ? 8 : 10,
+              }}
             />
           ))}
         </motion.div>

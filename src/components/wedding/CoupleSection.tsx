@@ -5,9 +5,13 @@ import brideImage from "@/assets/bride.jpg";
 const CoupleSection = () => {
   return (
     <section className="section-padding bg-cream relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-rose/30 rounded-full blur-3xl" />
+      {/* Gold Blur Orbs - Decorative Elements */}
+      <div className="absolute top-10 left-10 w-48 h-48 bg-gold/8 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-16 w-56 h-56 bg-gold/6 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-0 w-40 h-40 bg-gold/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 right-0 w-52 h-52 bg-gold/7 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-16 w-44 h-44 bg-gold/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-48 h-48 bg-gold/6 rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto relative">
         {/* Section Header */}
