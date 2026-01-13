@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar, Clock, PartyPopper } from "lucide-react";
+import { LargeMandala } from "./AnimatedPatterns";
+import TiltCard from "./TiltCard";
 
 // Sparkle star icon for timeline nodes
 const SparkleIcon = ({ className }: { className?: string }) => (
@@ -59,6 +61,12 @@ const eventDays = [
 const EventsSection = () => {
   return (
     <section className="section-padding bg-background relative overflow-hidden">
+      {/* Large Rotating Mandala Background */}
+      <div className="absolute inset-0 pointer-events-none text-burgundy overflow-hidden">
+        <LargeMandala className="w-[600px] h-[600px] -right-40 top-1/4" opacity={0.04} />
+        <LargeMandala className="w-[400px] h-[400px] -left-32 bottom-20" opacity={0.03} />
+      </div>
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div
@@ -69,11 +77,27 @@ const EventsSection = () => {
         />
       </div>
 
-      {/* Decorative Corners */}
-      <div className="absolute top-6 left-6 w-20 h-20 border-t-2 border-l-2 border-gold/40 rounded-tl-xl" />
-      <div className="absolute top-6 right-6 w-20 h-20 border-t-2 border-r-2 border-gold/40 rounded-tr-xl" />
-      <div className="absolute bottom-6 left-6 w-20 h-20 border-b-2 border-l-2 border-gold/40 rounded-bl-xl" />
-      <div className="absolute bottom-6 right-6 w-20 h-20 border-b-2 border-r-2 border-gold/40 rounded-br-xl" />
+      {/* Decorative Corners with subtle glow */}
+      <motion.div 
+        className="absolute top-6 left-6 w-20 h-20 border-t-2 border-l-2 border-gold/40 rounded-tl-xl"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute top-6 right-6 w-20 h-20 border-t-2 border-r-2 border-gold/40 rounded-tr-xl"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+      <motion.div 
+        className="absolute bottom-6 left-6 w-20 h-20 border-b-2 border-l-2 border-gold/40 rounded-bl-xl"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+      <motion.div 
+        className="absolute bottom-6 right-6 w-20 h-20 border-b-2 border-r-2 border-gold/40 rounded-br-xl"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+      />
 
       <div className="max-w-5xl mx-auto relative">
         {/* Section Header */}
@@ -158,8 +182,8 @@ const EventsSection = () => {
                       isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                     }`}
                   >
-                    {/* Card */}
-                    <div className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 text-left">
+                    {/* Card with 3D Tilt */}
+                    <TiltCard className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 text-left">
                       {/* Event Title */}
                       <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold leading-tight">
                         {day.title}
@@ -202,7 +226,7 @@ const EventsSection = () => {
                       <p className="text-foreground/70 font-body text-sm mt-4 leading-relaxed">
                         {day.description}
                       </p>
-                    </div>
+                    </TiltCard>
                   </motion.div>
                 </div>
               );
@@ -218,7 +242,7 @@ const EventsSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-12"
         >
-          <div className="relative bg-gradient-to-r from-burgundy/5 via-burgundy/10 to-burgundy/5 rounded-2xl p-6 md:p-8 border border-gold/30">
+          <TiltCard className="relative bg-gradient-to-r from-burgundy/5 via-burgundy/10 to-burgundy/5 rounded-2xl p-6 md:p-8 border border-gold/30">
             {/* Decorative corners */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold rounded-tl-lg" />
             <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold rounded-tr-lg" />
@@ -241,7 +265,7 @@ const EventsSection = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </TiltCard>
         </motion.div>
       </div>
     </section>

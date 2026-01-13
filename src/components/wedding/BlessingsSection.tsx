@@ -1,16 +1,34 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import blessingsBg from "@/assets/blessings-bg.jpg";
+import { AnimatedDiya } from "./AnimatedPatterns";
 
 const BlessingsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${blessingsBg})` }}
+    <section ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden">
+      {/* Parallax Background Image */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+        style={{ 
+          backgroundImage: `url(${blessingsBg})`,
+          y: yBackground
+        }}
       >
         <div className="absolute inset-0 bg-burgundy/85" />
-      </div>
+      </motion.div>
+
+      {/* Floating Diyas */}
+      <AnimatedDiya className="top-20 left-10 md:left-20" />
+      <AnimatedDiya className="top-32 right-16 md:right-32" />
+      <AnimatedDiya className="bottom-24 left-1/4 hidden md:block" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <motion.div
@@ -37,18 +55,26 @@ const BlessingsSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          {/* Quote */}
+          {/* Quote with animated quote marks */}
           <div className="relative">
-            <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-6xl text-gold/30 font-display">
+            <motion.span 
+              className="absolute -top-8 left-1/2 -translate-x-1/2 text-6xl text-gold/30 font-display"
+              animate={{ y: [0, -5, 0], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
               "
-            </span>
+            </motion.span>
             <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl text-ivory/95 italic leading-relaxed">
               May your love for each other grow stronger with each passing day. 
               May your home be filled with laughter, warmth, and endless blessings.
             </blockquote>
-            <span className="absolute -bottom-4 right-1/4 text-6xl text-gold/30 font-display">
+            <motion.span 
+              className="absolute -bottom-4 right-1/4 text-6xl text-gold/30 font-display"
+              animate={{ y: [0, -5, 0], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            >
               "
-            </span>
+            </motion.span>
           </div>
 
           <p className="text-gold-light font-body text-sm tracking-wide mt-8">
