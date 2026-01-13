@@ -15,7 +15,10 @@ const WaveTransition = ({
 }: WaveTransitionProps) => {
   if (variant === "wave") {
     return (
-      <div className="relative w-full h-24 md:h-32 overflow-hidden">
+      <div 
+        className="relative w-full h-24 md:h-32 overflow-hidden -my-px"
+        style={{ backgroundColor: fromColor }}
+      >
         <motion.svg
           viewBox="0 0 1440 120"
           className="absolute w-full h-full"
