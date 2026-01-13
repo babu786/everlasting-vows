@@ -62,10 +62,10 @@ const EventsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
-            शुभ मुहूर्त
+            Auspicious Occasions
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
-            विवाह समारोह
+            Wedding Ceremonies
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
             <span className="px-4 text-gold text-2xl">❧</span>
