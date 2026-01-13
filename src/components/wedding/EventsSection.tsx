@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, PartyPopper } from "lucide-react";
+import { Calendar, Clock, PartyPopper } from "lucide-react";
 
 // Sparkle star icon for timeline nodes
 const SparkleIcon = ({ className }: { className?: string }) => (
@@ -17,25 +17,42 @@ const eventDays = [
     title: "Shri Ganesh Pujan",
     subtitle: "(Peela Chawal)",
     date: "Saturday, 17 January 2026",
-    description: "Shubh wedding ceremonies ki shuruaat Ganesh Pujan ke saath"
+    description: "Shubh wedding ceremonies ki shuruaat Ganesh Pujan ke saath",
+    timings: [
+      { event: "Ganesh Pujan", time: "8:30 AM" }
+    ]
   },
   {
     title: "Baan Sagdi, Baath, Lagan Tika",
     subtitle: "Pratibhoj evam Mahila Sangeet",
     date: "Wednesday, 21 January 2026",
-    description: "Traditional rasmon aur sangeet ki manohar shaam"
+    description: "Traditional rasmon aur sangeet ki manohar shaam",
+    timings: [
+      { event: "Baath", time: "8:15 AM" },
+      { event: "Lagan Tika", time: "10:00 AM" },
+      { event: "Pratibhoj", time: "12:15 PM" },
+      { event: "Mahila Sangeet", time: "6:00 PM" }
+    ]
   },
   {
     title: "Chak evam Haldi",
     subtitle: "(Haldi Ceremony)",
     date: "Thursday, 22 January 2026",
-    description: "Haldi ki rasam ke saath mangalmay taiyaariyan"
+    description: "Haldi ki rasam ke saath mangalmay taiyaariyan",
+    timings: [
+      { event: "Chak", time: "10:00 AM" },
+      { event: "Haldi", time: "1:15 PM" }
+    ]
   },
   {
     title: "Vivah",
     subtitle: "(Panigrahana Sanskar)",
     date: "Friday, 23 January 2026",
-    description: "Shubh Lagna mein Vivah Sanskar"
+    description: "Shubh Lagna mein Vivah Sanskar",
+    timings: [
+      { event: "Nikasi", time: "4:30 PM" },
+      { event: "Panigrahana Sanskar", time: "Shubh Lagna" }
+    ]
   }
 ];
 
@@ -154,6 +171,26 @@ const EventsSection = () => {
                         <Calendar className="w-4 h-4 text-gold" />
                         <span className="font-body text-sm">{day.date}</span>
                       </div>
+
+                      {/* Timings */}
+                      {day.timings && day.timings.length > 0 && (
+                        <div className="mt-4 pt-4 border-t border-border/50">
+                          <div className="flex flex-wrap justify-center gap-3">
+                            {day.timings.map((timing, idx) => (
+                              <div 
+                                key={idx}
+                                className="flex items-center gap-1.5 bg-burgundy/5 px-3 py-1.5 rounded-full"
+                              >
+                                <Clock className="w-3.5 h-3.5 text-gold" />
+                                <span className="text-xs font-body">
+                                  <span className="text-foreground/70">{timing.event}:</span>
+                                  <span className="text-burgundy font-medium ml-1">{timing.time}</span>
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
 
                       {/* Description */}
                       <p className="text-foreground/70 font-body text-sm mt-4 leading-relaxed">
