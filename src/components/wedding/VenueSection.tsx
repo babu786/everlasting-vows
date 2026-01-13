@@ -19,8 +19,8 @@ const venues = [
     address: "सांगानेर, जयपुर",
     events: ["निकासी", "पाणिग्रहण संस्कार"],
     dates: "23 जनवरी 2026",
-    mapLink: "https://maps.google.com/?q=Sanganer+Jaipur",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.123456789!2d75.7871!3d26.8234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5b123456789%3A0xabcdef123456789!2sSanganer%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
+    mapLink: "https://www.google.com/maps/place/Sagar+Mahal+Marriage+Garden/@26.9204359,75.6718496,17z",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1779.5!2d75.6718496!3d26.9204359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4d06b31ecae5%3A0x208e2512ea9c592!2sSagar%20Mahal%20Marriage%20Garden!5e0!3m2!1sen!2sin!4v1704900000000!5m2!1sen!2sin"
   }
 ];
 
