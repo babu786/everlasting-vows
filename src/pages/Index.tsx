@@ -7,14 +7,20 @@ import GallerySection from "@/components/wedding/GallerySection";
 import VenueSection from "@/components/wedding/VenueSection";
 import ClosingSection from "@/components/wedding/ClosingSection";
 import BackgroundMusic from "@/components/wedding/BackgroundMusic";
+import FloatingElements from "@/components/wedding/FloatingElements";
+import LoveStorySection from "@/components/wedding/LoveStorySection";
+import WhatsAppShare from "@/components/wedding/WhatsAppShare";
 
 const Index = () => {
   return (
     <main className="overflow-hidden">
+      <FloatingElements />
+      <WhatsAppShare />
       <BackgroundMusic />
       <HeroSection />
       <CountdownTimer />
       <CoupleSection />
+      <LoveStorySection />
       <EventsSection />
       <BlessingsSection />
       <GallerySection />
