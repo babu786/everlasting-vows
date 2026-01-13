@@ -34,14 +34,12 @@ const Index = () => {
         />
         
         <BlessingsSection />
-        <div className="-mt-1 -mb-1">
-          <WaveTransition 
-            fromColor="hsl(var(--burgundy))" 
-            toColor="hsl(var(--ivory))" 
-            variant="wave"
-            flip
-          />
-        </div>
+        <WaveTransition 
+          fromColor="hsl(var(--burgundy))" 
+          toColor="hsl(var(--ivory))" 
+          variant="wave"
+          flip
+        />
         
         <VenueSection />
         <ClosingSection />
