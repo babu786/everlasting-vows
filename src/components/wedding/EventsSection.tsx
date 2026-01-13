@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, PartyPopper } from "lucide-react";
+import { Calendar, Clock, MapPin, PartyPopper, Sparkles, Heart } from "lucide-react";
 
 const eventDays = [
   {
@@ -73,10 +73,54 @@ const EventsSection = () => {
         {/* Vertical Timeline - Centered with Alternating Cards */}
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Line - Centered (hidden on mobile, visible on md+) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
           
           {/* Timeline Line - Left aligned for mobile */}
-          <div className="md:hidden absolute left-5 top-4 bottom-4 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
+          <div className="md:hidden absolute left-5 top-10 bottom-10 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
+
+          {/* Top Ornament - Desktop */}
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="hidden md:flex absolute left-1/2 -translate-x-1/2 -top-2 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_20px_rgba(184,134,11,0.5)] z-20 items-center justify-center"
+          >
+            <Sparkles className="w-5 h-5 text-burgundy" />
+          </motion.div>
+
+          {/* Top Ornament - Mobile */}
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="md:hidden absolute left-3 -top-2 w-8 h-8 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_15px_rgba(184,134,11,0.5)] z-20 flex items-center justify-center"
+          >
+            <Sparkles className="w-4 h-4 text-burgundy" />
+          </motion.div>
+
+          {/* Bottom Ornament - Desktop */}
+          <motion.div
+            initial={{ scale: 0, rotate: 180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
+            className="hidden md:flex absolute left-1/2 -translate-x-1/2 -bottom-2 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_20px_rgba(184,134,11,0.5)] z-20 items-center justify-center"
+          >
+            <Heart className="w-5 h-5 text-burgundy fill-burgundy" />
+          </motion.div>
+
+          {/* Bottom Ornament - Mobile */}
+          <motion.div
+            initial={{ scale: 0, rotate: 180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
+            className="md:hidden absolute left-3 -bottom-2 w-8 h-8 rounded-full bg-gradient-to-br from-gold to-gold/80 border-2 border-burgundy shadow-[0_0_15px_rgba(184,134,11,0.5)] z-20 flex items-center justify-center"
+          >
+            <Heart className="w-4 h-4 text-burgundy fill-burgundy" />
+          </motion.div>
 
           {/* Event Days */}
           <div className="space-y-6 md:space-y-8">
