@@ -8,7 +8,7 @@ import ClosingSection from "@/components/wedding/ClosingSection";
 import BackgroundMusic from "@/components/wedding/BackgroundMusic";
 import FloatingElements from "@/components/wedding/FloatingElements";
 import CursorTrail from "@/components/wedding/CursorTrail";
-import WaveTransition from "@/components/wedding/WaveTransition";
+
 import RangoliDivider from "@/components/wedding/RangoliDivider";
 import MarigoldGarland from "@/components/wedding/MarigoldGarland";
 
@@ -27,19 +27,8 @@ const Index = () => {
         <RangoliDivider variant="gold" />
         
         <EventsSection />
-        <WaveTransition 
-          fromColor="hsl(var(--ivory))" 
-          toColor="hsl(var(--burgundy))" 
-          variant="wave" 
-        />
         
         <BlessingsSection />
-        <WaveTransition 
-          fromColor="hsl(var(--burgundy))" 
-          toColor="hsl(var(--ivory))" 
-          variant="wave"
-          flip
-        />
         
         <VenueSection />
         <ClosingSection />
