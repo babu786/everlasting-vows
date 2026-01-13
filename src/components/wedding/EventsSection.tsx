@@ -153,7 +153,7 @@ const EventsSection = () => {
                     }`}
                   >
                     {/* Card */}
-                    <div className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 text-center">
+                    <div className="bg-card rounded-xl p-6 md:p-8 shadow-md border border-border/50 text-left">
                       {/* Event Title */}
                       <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold leading-tight">
                         {day.title}
@@ -167,7 +167,7 @@ const EventsSection = () => {
                       )}
 
                       {/* Date with Calendar Icon */}
-                      <div className="flex items-center justify-center gap-2 mt-4 text-muted-foreground">
+                      <div className="flex items-center gap-2 mt-4 text-muted-foreground">
                         <Calendar className="w-4 h-4 text-gold" />
                         <span className="font-body text-sm">{day.date}</span>
                       </div>
@@ -175,7 +175,7 @@ const EventsSection = () => {
                       {/* Timings */}
                       {day.timings && day.timings.length > 0 && (
                         <div className="mt-4 pt-4 border-t border-border/50">
-                          <div className="flex flex-wrap justify-center gap-3">
+                          <div className="flex flex-wrap gap-3">
                             {day.timings.map((timing, idx) => (
                               <div 
                                 key={idx}
