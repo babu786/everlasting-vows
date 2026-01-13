@@ -70,80 +70,103 @@ const EventsSection = () => {
           </div>
         </motion.div>
 
-        {/* Vertical Timeline */}
-        <div className="relative max-w-2xl mx-auto">
-          {/* Timeline Line */}
-          <div className="absolute left-5 md:left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
+        {/* Vertical Timeline - Centered with Alternating Cards */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Timeline Line - Centered (hidden on mobile, visible on md+) */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
+          
+          {/* Timeline Line - Left aligned for mobile */}
+          <div className="md:hidden absolute left-5 top-4 bottom-4 w-0.5 bg-gradient-to-b from-gold/20 via-gold/60 to-gold/20" />
 
           {/* Event Days */}
-          <div className="space-y-4">
-            {eventDays.map((day, dayIndex) => (
-              <motion.div
-                key={day.date}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: dayIndex * 0.1 }}
-                className="relative pl-12 md:pl-14"
-              >
-                {/* Timeline Node */}
+          <div className="space-y-6 md:space-y-8">
+            {eventDays.map((day, dayIndex) => {
+              const isLeft = dayIndex % 2 === 0;
+              
+              return (
                 <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
+                  key={day.date}
+                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
-                  className="absolute left-3 md:left-4 top-5 w-4 h-4 rounded-full bg-gold border-2 border-burgundy shadow-[0_0_10px_rgba(184,134,11,0.4)] z-10"
+                  transition={{ duration: 0.5, delay: dayIndex * 0.1 }}
+                  className={`relative pl-12 md:pl-0 md:flex ${isLeft ? 'md:justify-start md:pr-[52%]' : 'md:justify-end md:pl-[52%]'}`}
                 >
-                  {/* Pulse Ring */}
-                  <span className="absolute inset-0 rounded-full bg-gold/40 animate-ping" style={{ animationDuration: '2s' }} />
-                  <div className="absolute inset-1 rounded-full bg-burgundy" />
-                </motion.div>
+                  {/* Timeline Node - Mobile (left aligned) */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
+                    className="md:hidden absolute left-3 top-5 w-4 h-4 rounded-full bg-gold border-2 border-burgundy shadow-[0_0_10px_rgba(184,134,11,0.4)] z-10"
+                  >
+                    <div className="absolute inset-1 rounded-full bg-burgundy" />
+                  </motion.div>
 
-                {/* Compact Card */}
-                <div className="card-elegant p-4 md:p-5">
-                  {/* Date Header */}
-                  <div className="flex items-center gap-2.5 mb-3 pb-3 border-b border-gold/15">
-                    <div className="w-9 h-9 bg-burgundy/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-4 h-4 text-burgundy" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="font-display text-lg md:text-xl text-burgundy font-semibold leading-tight">
-                        {day.date}
-                      </h3>
-                      <div className="flex items-center gap-1 text-muted-foreground text-xs mt-0.5">
-                        <MapPin className="w-3 h-3 text-gold flex-shrink-0" />
-                        <span className="truncate">{day.venue}</span>
+                  {/* Timeline Node - Desktop (centered) */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
+                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-5 w-5 h-5 rounded-full bg-gold border-2 border-burgundy shadow-[0_0_12px_rgba(184,134,11,0.5)] z-10 items-center justify-center"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-burgundy" />
+                  </motion.div>
+
+                  {/* Connector Line - Desktop only */}
+                  <div 
+                    className={`hidden md:block absolute top-7 w-6 h-0.5 bg-gold/40 ${
+                      isLeft ? 'right-[48%]' : 'left-[48%]'
+                    }`}
+                  />
+
+                  {/* Card */}
+                  <div className="card-elegant p-4 md:p-5 w-full">
+                    {/* Date Header */}
+                    <div className="flex items-center gap-2.5 mb-3 pb-3 border-b border-gold/15">
+                      <div className="w-9 h-9 bg-burgundy/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Calendar className="w-4 h-4 text-burgundy" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-display text-lg md:text-xl text-burgundy font-semibold leading-tight">
+                          {day.date}
+                        </h3>
+                        <div className="flex items-center gap-1 text-muted-foreground text-xs mt-0.5">
+                          <MapPin className="w-3 h-3 text-gold flex-shrink-0" />
+                          <span className="truncate">{day.venue}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Events List */}
-                  <div className="space-y-2.5">
-                    {day.events.map((event, eventIndex) => (
-                      <motion.div
-                        key={event.name}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: dayIndex * 0.1 + eventIndex * 0.05 }}
-                        className="flex items-center gap-3 group"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 group-hover:scale-150 transition-transform" />
-                        <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
-                          <h4 className="font-display text-base text-foreground font-medium truncate">
-                            {event.name}
-                          </h4>
-                          <div className="flex items-center gap-1 text-gold text-sm flex-shrink-0">
-                            <Clock className="w-3 h-3" />
-                            <span className="font-body">{event.time}</span>
+                    {/* Events List */}
+                    <div className="space-y-2.5">
+                      {day.events.map((event, eventIndex) => (
+                        <motion.div
+                          key={event.name}
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: dayIndex * 0.1 + eventIndex * 0.05 }}
+                          className="flex items-center gap-3 group"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 group-hover:scale-150 transition-transform" />
+                          <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
+                            <h4 className="font-display text-base text-foreground font-medium truncate">
+                              {event.name}
+                            </h4>
+                            <div className="flex items-center gap-1 text-gold text-sm flex-shrink-0">
+                              <Clock className="w-3 h-3" />
+                              <span className="font-body">{event.time}</span>
+                            </div>
                           </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
