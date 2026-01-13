@@ -78,57 +78,135 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 
           {/* Central monogram container */}
           <div className="relative flex flex-col items-center">
-            {/* Animated T & G Monogram */}
+            {/* Animated T & G Monogram - Elegant Script Style */}
             <motion.svg
-              viewBox="0 0 300 120"
-              className="w-80 md:w-96 h-32 md:h-40"
+              viewBox="0 0 420 200"
+              className="w-80 md:w-[420px] h-40 md:h-52"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Letter T - Drawing animation */}
+              {/* Decorative top flourish */}
               <motion.path
-                d="M30 20 L90 20 M60 20 L60 100"
+                d="M100,25 C130,15 180,18 210,28 C240,18 290,15 320,25"
+                fill="none"
+                stroke="hsl(var(--gold-light))"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.6 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              />
+
+              {/* Cursive T with elegant flourishes */}
+              <motion.path
+                d="M70,50 C85,42 115,42 130,50 C135,53 132,60 128,65 
+                   Q125,70 120,75 L100,130 Q95,145 85,148 
+                   C78,150 72,145 75,138 Q78,132 85,128 
+                   C90,125 95,130 92,138 Q88,150 70,155"
                 fill="none"
                 stroke="hsl(var(--gold))"
-                strokeWidth="3"
+                strokeWidth="2.5"
                 strokeLinecap="round"
+                strokeLinejoin="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 1, ease: "easeOut" }}
                 style={{
-                  filter: "drop-shadow(0 0 8px hsl(var(--gold) / 0.6))",
+                  filter: "drop-shadow(0 0 4px hsl(var(--gold))) drop-shadow(0 0 10px hsl(var(--gold) / 0.4))",
                 }}
               />
 
-              {/* Ampersand & - Fade and scale */}
-              <motion.text
-                x="150"
-                y="75"
-                textAnchor="middle"
-                fill="hsl(var(--gold-light))"
-                fontSize="48"
-                fontFamily="Cormorant Garamond, serif"
-                fontStyle="italic"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: "backOut" }}
-              >
-                &
-              </motion.text>
-
-              {/* Letter G - Drawing animation */}
+              {/* T crossbar flourish */}
               <motion.path
-                d="M270 40 C230 10 200 30 200 60 C200 90 230 110 260 100 C280 95 280 70 260 70 L240 70"
+                d="M55,55 C60,48 75,45 100,48 C125,51 145,48 150,55"
                 fill="none"
                 stroke="hsl(var(--gold))"
-                strokeWidth="3"
+                strokeWidth="2"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
                 style={{
-                  filter: "drop-shadow(0 0 8px hsl(var(--gold) / 0.6))",
+                  filter: "drop-shadow(0 0 4px hsl(var(--gold) / 0.6))",
+                }}
+              />
+
+              {/* Elegant calligraphic ampersand */}
+              <motion.path
+                d="M190,55 C175,45 168,60 178,72 C188,84 200,88 195,105 
+                   C190,122 170,125 165,110 C160,95 175,85 190,90 
+                   C205,95 215,110 230,105 C240,100 235,85 225,80"
+                fill="none"
+                stroke="hsl(var(--gold-light))"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                style={{
+                  filter: "drop-shadow(0 0 6px hsl(var(--gold) / 0.5))",
+                }}
+              />
+
+              {/* Cursive G with flowing loop */}
+              <motion.path
+                d="M320,45 C360,35 380,55 375,85 C370,115 340,135 310,125 
+                   C290,118 285,100 300,90 L330,90 C340,90 345,100 340,115 
+                   L325,155 C320,168 305,172 295,165 C285,158 290,145 302,145"
+                fill="none"
+                stroke="hsl(var(--gold))"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+                style={{
+                  filter: "drop-shadow(0 0 4px hsl(var(--gold))) drop-shadow(0 0 10px hsl(var(--gold) / 0.4))",
+                }}
+              />
+
+              {/* G decorative tail flourish */}
+              <motion.path
+                d="M302,145 C315,148 330,145 345,135 C355,128 365,130 360,142 
+                   C355,155 340,165 320,168"
+                fill="none"
+                stroke="hsl(var(--gold))"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.5, delay: 1.5, ease: "easeOut" }}
+                style={{
+                  filter: "drop-shadow(0 0 4px hsl(var(--gold) / 0.5))",
+                }}
+              />
+
+              {/* Bottom connecting flourish */}
+              <motion.path
+                d="M75,160 C110,175 160,178 210,170 C260,178 310,175 345,160"
+                fill="none"
+                stroke="hsl(var(--gold-light))"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.6 }}
+                transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+              />
+
+              {/* Center decorative dot */}
+              <motion.circle
+                cx="210"
+                cy="170"
+                r="3"
+                fill="hsl(var(--gold))"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 2.2 }}
+                style={{
+                  filter: "drop-shadow(0 0 6px hsl(var(--gold)))",
                 }}
               />
             </motion.svg>
