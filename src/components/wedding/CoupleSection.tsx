@@ -19,10 +19,10 @@ const CoupleSection = () => {
           className="text-center mb-16"
         >
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
-            The Couple
+            दूल्हा और दुल्हन
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
-            Meet Us
+            Welcome
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
             <span className="px-4 text-gold text-2xl">❧</span>
@@ -30,75 +30,107 @@ const CoupleSection = () => {
         </motion.div>
 
         {/* Couple Cards */}
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
-          {/* Groom */}
+        <div className="space-y-20 md:space-y-32">
+          {/* Groom - First Welcome */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col md:flex-row items-center gap-8 md:gap-16"
           >
-            <div className="relative inline-block mb-8">
-              <div className="image-frame w-64 h-80 md:w-72 md:h-96 mx-auto">
-                <img
-                  src={groomImage}
-                  alt="The Groom"
-                  className="w-full h-full object-cover"
-                />
+            <div className="relative md:w-1/2 flex justify-center">
+              <div className="relative inline-block">
+                <div className="image-frame w-64 h-80 md:w-80 md:h-[28rem]">
+                  <img
+                    src={groomImage}
+                    alt="The Groom - Tanishk"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Decorative corners */}
+                <div className="ornament-corner top-left -top-3 -left-3" />
+                <div className="ornament-corner top-right -top-3 -right-3" />
+                <div className="ornament-corner bottom-left -bottom-3 -left-3" />
+                <div className="ornament-corner bottom-right -bottom-3 -right-3" />
               </div>
-              {/* Decorative corners */}
-              <div className="ornament-corner top-left -top-3 -left-3" />
-              <div className="ornament-corner top-right -top-3 -right-3" />
-              <div className="ornament-corner bottom-left -bottom-3 -left-3" />
-              <div className="ornament-corner bottom-right -bottom-3 -right-3" />
             </div>
-            <h3 className="font-display text-3xl md:text-4xl text-burgundy font-semibold mb-2">
-              Arjun Sharma
-            </h3>
-            <p className="text-muted-foreground font-body text-sm tracking-wide mb-4">
-              Son of Mr. Rajesh & Mrs. Sunita Sharma
-            </p>
-            <p className="text-foreground/80 font-body text-sm max-w-sm mx-auto leading-relaxed">
-              A software engineer with a passion for music and travel. 
-              He believes in the beauty of traditional values and the 
-              strength of family bonds.
-            </p>
+            
+            <div className="md:w-1/2 text-center md:text-left">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <span className="text-gold text-sm tracking-[0.2em] uppercase font-body">
+                  The Groom
+                </span>
+                <h3 className="font-display text-4xl md:text-5xl text-burgundy font-semibold mt-2 mb-4">
+                  Tanishk
+                </h3>
+                <div className="w-20 h-px bg-gradient-to-r from-gold/60 to-transparent mx-auto md:mx-0 mb-6" />
+                <p className="font-display text-xl md:text-2xl text-burgundy/80 italic mb-4">
+                  "आपका स्वागत है"
+                </p>
+                <p className="text-foreground/80 font-body text-base leading-relaxed max-w-md mx-auto md:mx-0">
+                  With immense joy and gratitude, I welcome you to celebrate 
+                  the beginning of our beautiful journey together. Your blessings 
+                  and presence will make this occasion truly special.
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
 
-          {/* Bride */}
+          {/* Bride - Second Welcome on Scroll */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16"
           >
-            <div className="relative inline-block mb-8">
-              <div className="image-frame w-64 h-80 md:w-72 md:h-96 mx-auto">
-                <img
-                  src={brideImage}
-                  alt="The Bride"
-                  className="w-full h-full object-cover"
-                />
+            <div className="relative md:w-1/2 flex justify-center">
+              <div className="relative inline-block">
+                <div className="image-frame w-64 h-80 md:w-80 md:h-[28rem]">
+                  <img
+                    src={brideImage}
+                    alt="The Bride - Ginni"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Decorative corners */}
+                <div className="ornament-corner top-left -top-3 -left-3" />
+                <div className="ornament-corner top-right -top-3 -right-3" />
+                <div className="ornament-corner bottom-left -bottom-3 -left-3" />
+                <div className="ornament-corner bottom-right -bottom-3 -right-3" />
               </div>
-              {/* Decorative corners */}
-              <div className="ornament-corner top-left -top-3 -left-3" />
-              <div className="ornament-corner top-right -top-3 -right-3" />
-              <div className="ornament-corner bottom-left -bottom-3 -left-3" />
-              <div className="ornament-corner bottom-right -bottom-3 -right-3" />
             </div>
-            <h3 className="font-display text-3xl md:text-4xl text-burgundy font-semibold mb-2">
-              Priya Kapoor
-            </h3>
-            <p className="text-muted-foreground font-body text-sm tracking-wide mb-4">
-              Daughter of Mr. Vikram & Mrs. Meera Kapoor
-            </p>
-            <p className="text-foreground/80 font-body text-sm max-w-sm mx-auto leading-relaxed">
-              A doctor by profession with a heart full of compassion. 
-              She cherishes traditions and dreams of building a loving 
-              home filled with laughter.
-            </p>
+            
+            <div className="md:w-1/2 text-center md:text-right">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <span className="text-gold text-sm tracking-[0.2em] uppercase font-body">
+                  The Bride
+                </span>
+                <h3 className="font-display text-4xl md:text-5xl text-burgundy font-semibold mt-2 mb-4">
+                  Ginni
+                </h3>
+                <div className="w-20 h-px bg-gradient-to-l from-gold/60 to-transparent mx-auto md:ml-auto md:mr-0 mb-6" />
+                <p className="font-display text-xl md:text-2xl text-burgundy/80 italic mb-4">
+                  "हृदय से स्वागत है"
+                </p>
+                <p className="text-foreground/80 font-body text-base leading-relaxed max-w-md mx-auto md:ml-auto md:mr-0">
+                  With a heart full of dreams and eyes filled with hope, 
+                  I warmly welcome you to witness the union of our souls. 
+                  May your blessings guide us on this sacred path.
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>

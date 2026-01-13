@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, Sparkles } from "lucide-react";
+import { Calendar, Sparkles } from "lucide-react";
 
 const events = [
   {
-    name: "Mehendi Ceremony",
-    date: "13th February, 2026",
-    time: "4:00 PM onwards",
-    description: "An evening of beautiful henna artistry, music, and celebration.",
+    name: "श्री गणेश पूजन",
+    subtitle: "(पीला चावल)",
+    date: "शनिवार, 17 जनवरी 2026",
+    description: "शुभ विवाह समारोह की शुरुआत गणेश पूजन के साथ",
   },
   {
-    name: "Sangeet Night",
-    date: "14th February, 2026",
-    time: "7:00 PM onwards",
-    description: "A night filled with dance, music, and joyous performances.",
+    name: "बान सगड़ी, बाठ, लगन टीका",
+    subtitle: "प्रतिबोज एवं महिला संगीत",
+    date: "बुधवार, 21 जनवरी 2026",
+    description: "परंपरागत रस्मों और संगीत की मनोहर शाम",
   },
   {
-    name: "Wedding Ceremony",
-    date: "15th February, 2026",
-    time: "10:00 AM",
-    description: "The sacred union of two souls in holy matrimony.",
+    name: "चक एवं हल्दी",
+    subtitle: "",
+    date: "गुरुवार, 22 जनवरी 2026",
+    description: "हल्दी की रस्म के साथ मंगलमय तैयारियां",
   },
   {
-    name: "Reception",
-    date: "15th February, 2026",
-    time: "7:00 PM onwards",
-    description: "A grand celebration to honor the newlyweds.",
+    name: "निकासी",
+    subtitle: "",
+    date: "शुक्रवार, 23 जनवरी 2026",
+    description: "शुभ विवाह का पवित्र मुहूर्त",
   },
 ];
 
@@ -51,10 +51,10 @@ const EventsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
-            Celebrations
+            शुभ मुहूर्त
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
-            Wedding Events
+            विवाह समारोह
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
             <span className="px-4 text-gold text-2xl">❧</span>
@@ -89,9 +89,14 @@ const EventsSection = () => {
                 }`}
               >
                 <div className="card-elegant p-6 md:p-8">
-                  <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold mb-3">
+                  <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold mb-1">
                     {event.name}
                   </h3>
+                  {event.subtitle && (
+                    <p className="text-burgundy/70 font-body text-sm mb-3">
+                      {event.subtitle}
+                    </p>
+                  )}
                   
                   <div className={`flex flex-wrap gap-4 mb-4 ${
                     index % 2 === 0 ? "md:justify-end" : "md:justify-start"
@@ -99,10 +104,6 @@ const EventsSection = () => {
                     <div className="flex items-center gap-2 text-muted-foreground text-sm">
                       <Calendar className="w-4 h-4 text-gold" />
                       <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <Clock className="w-4 h-4 text-gold" />
-                      <span>{event.time}</span>
                     </div>
                   </div>
                   
