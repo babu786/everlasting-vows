@@ -34,7 +34,7 @@ const Index = () => {
         />
         
         <BlessingsSection />
-        <div className="-mb-20 md:-mb-28">
+        <div className="-mt-1 -mb-1">
           <WaveTransition 
             fromColor="hsl(var(--burgundy))" 
             toColor="hsl(var(--ivory))" 
