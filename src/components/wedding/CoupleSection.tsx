@@ -6,7 +6,7 @@ import { PaisleyPattern } from "./AnimatedPatterns";
 
 const CoupleSection = () => {
   return (
-    <section className="section-padding bg-cream relative overflow-hidden">
+    <section className="section-padding bg-cream dark:bg-background relative overflow-hidden">
       {/* Animated Paisley Background Pattern */}
       <div className="absolute inset-0 pointer-events-none text-gold overflow-hidden">
         <motion.div
@@ -20,34 +20,34 @@ const CoupleSection = () => {
         </motion.div>
       </div>
 
-      {/* Decorative gold blur orbs with pulsing animation */}
+      {/* Decorative blur orbs with pulsing animation */}
       <motion.div 
-        className="absolute top-10 left-10 w-48 h-48 bg-gold/8 rounded-full blur-3xl"
+        className="absolute top-10 left-10 w-48 h-48 bg-gold/8 dark:bg-candle-glow/10 rounded-full blur-3xl"
         animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.12, 0.08] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute top-20 right-16 w-56 h-56 bg-gold/6 rounded-full blur-3xl"
+        className="absolute top-20 right-16 w-56 h-56 bg-gold/6 dark:bg-candle-glow/8 rounded-full blur-3xl"
         animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.1, 0.06] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
       <motion.div 
-        className="absolute top-1/2 left-0 w-40 h-40 bg-gold/10 rounded-full blur-3xl"
+        className="absolute top-1/2 left-0 w-40 h-40 bg-gold/10 dark:bg-candle-glow/12 rounded-full blur-3xl"
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
       <motion.div 
-        className="absolute top-1/2 right-0 w-52 h-52 bg-gold/7 rounded-full blur-3xl"
+        className="absolute top-1/2 right-0 w-52 h-52 bg-gold/7 dark:bg-candle-glow/9 rounded-full blur-3xl"
         animate={{ scale: [1, 1.2, 1], opacity: [0.07, 0.1, 0.07] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
       <motion.div 
-        className="absolute bottom-20 left-16 w-44 h-44 bg-gold/8 rounded-full blur-3xl"
+        className="absolute bottom-20 left-16 w-44 h-44 bg-gold/8 dark:bg-candle-glow/10 rounded-full blur-3xl"
         animate={{ scale: [1, 1.25, 1] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
       />
       <motion.div 
-        className="absolute bottom-10 right-10 w-48 h-48 bg-gold/6 rounded-full blur-3xl"
+        className="absolute bottom-10 right-10 w-48 h-48 bg-gold/6 dark:bg-candle-glow/8 rounded-full blur-3xl"
         animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.1, 0.06] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 3 }}
       />
@@ -64,7 +64,7 @@ const CoupleSection = () => {
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
             दूल्हा और दुल्हन
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy dark:text-gold mt-4 font-semibold">
             Welcome
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
@@ -109,11 +109,11 @@ const CoupleSection = () => {
                 <span className="text-gold text-sm tracking-[0.2em] uppercase font-body">
                   The Groom
                 </span>
-                <h3 className="font-display text-4xl md:text-5xl text-burgundy font-semibold mt-2 mb-4">
+                <h3 className="font-display text-4xl md:text-5xl text-burgundy dark:text-gold font-semibold mt-2 mb-4">
                   Tanishk
                 </h3>
                 <div className="w-20 h-px bg-gradient-to-r from-gold/60 to-transparent mx-auto md:mx-0 mb-6" />
-                <p className="font-display text-xl md:text-2xl text-burgundy/80 italic mb-4">
+                <p className="font-display text-xl md:text-2xl text-burgundy/80 dark:text-gold-light italic mb-4">
                   "आपका स्वागत है"
                 </p>
                 <p className="text-foreground/80 font-body text-base leading-relaxed max-w-md mx-auto md:mx-0">
@@ -160,11 +160,11 @@ const CoupleSection = () => {
                 <span className="text-gold text-sm tracking-[0.2em] uppercase font-body">
                   The Bride
                 </span>
-                <h3 className="font-display text-4xl md:text-5xl text-burgundy font-semibold mt-2 mb-4">
+                <h3 className="font-display text-4xl md:text-5xl text-burgundy dark:text-gold font-semibold mt-2 mb-4">
                   Ginni
                 </h3>
                 <div className="w-20 h-px bg-gradient-to-l from-gold/60 to-transparent mx-auto md:ml-auto md:mr-0 mb-6" />
-                <p className="font-display text-xl md:text-2xl text-burgundy/80 italic mb-4">
+                <p className="font-display text-xl md:text-2xl text-burgundy/80 dark:text-gold-light italic mb-4">
                   "हृदय से स्वागत है"
                 </p>
                 <p className="text-foreground/80 font-body text-base leading-relaxed max-w-md mx-auto md:ml-auto md:mr-0">
