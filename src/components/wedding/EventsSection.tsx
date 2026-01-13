@@ -94,6 +94,8 @@ const EventsSection = () => {
                   transition={{ duration: 0.3, delay: dayIndex * 0.1 + 0.2 }}
                   className="absolute left-3 md:left-4 top-5 w-4 h-4 rounded-full bg-gold border-2 border-burgundy shadow-[0_0_10px_rgba(184,134,11,0.4)] z-10"
                 >
+                  {/* Pulse Ring */}
+                  <span className="absolute inset-0 rounded-full bg-gold/40 animate-ping" style={{ animationDuration: '2s' }} />
                   <div className="absolute inset-1 rounded-full bg-burgundy" />
                 </motion.div>
 
