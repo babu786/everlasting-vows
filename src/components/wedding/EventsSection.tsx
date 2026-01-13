@@ -1,31 +1,40 @@
 import { motion } from "framer-motion";
-import { Calendar, Sparkles } from "lucide-react";
+import { Calendar, Clock, MapPin, PartyPopper } from "lucide-react";
 
-const events = [
+const eventDays = [
   {
-    name: "श्री गणेश पूजन",
-    subtitle: "(पीला चावल)",
     date: "शनिवार, 17 जनवरी 2026",
-    description: "शुभ विवाह समारोह की शुरुआत गणेश पूजन के साथ",
+    venue: "श्याम वाटिका",
+    events: [
+      { name: "श्री गणेश पूजन (पीला चावल)", time: "प्रातः 8.30 बजे" }
+    ]
   },
   {
-    name: "बान सगड़ी, बाठ, लगन टीका",
-    subtitle: "प्रतिबोज एवं महिला संगीत",
     date: "बुधवार, 21 जनवरी 2026",
-    description: "परंपरागत रस्मों और संगीत की मनोहर शाम",
+    venue: "श्याम वाटिका",
+    events: [
+      { name: "भात", time: "प्रातः 8.15 बजे" },
+      { name: "लगन टीका", time: "प्रातः 10.00 बजे" },
+      { name: "प्रतिबोज", time: "दोपहर 12.15 बजे" },
+      { name: "महिला संगीत", time: "सायं 6.00 बजे" }
+    ]
   },
   {
-    name: "चक एवं हल्दी",
-    subtitle: "",
     date: "गुरुवार, 22 जनवरी 2026",
-    description: "हल्दी की रस्म के साथ मंगलमय तैयारियां",
+    venue: "श्याम वाटिका",
+    events: [
+      { name: "चाक", time: "प्रातः 10.00 बजे" },
+      { name: "हल्दी", time: "दोपहर 1.15 बजे" }
+    ]
   },
   {
-    name: "निकासी",
-    subtitle: "",
     date: "शुक्रवार, 23 जनवरी 2026",
-    description: "शुभ विवाह का पवित्र मुहूर्त",
-  },
+    venue: "सांगानेर महल गार्डन",
+    events: [
+      { name: "निकासी", time: "सायं 4.30 बजे" },
+      { name: "पाणिग्रहण संस्कार", time: "रात्रि शुभ लग्नानुसार" }
+    ]
+  }
 ];
 
 const EventsSection = () => {
@@ -41,7 +50,7 @@ const EventsSection = () => {
         />
       </div>
 
-      <div className="max-w-4xl mx-auto relative">
+      <div className="max-w-5xl mx-auto relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,67 +63,101 @@ const EventsSection = () => {
             शुभ मुहूर्त
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
-            विवाह समारोह
+            वैवाहिक कार्यक्रम
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
             <span className="px-4 text-gold text-2xl">❧</span>
           </div>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gold/20 via-gold/40 to-gold/20 md:-translate-x-1/2" />
-
-          {events.map((event, index) => (
+        {/* Event Days Grid */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {eventDays.map((day, dayIndex) => (
             <motion.div
-              key={event.name}
+              key={day.date}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`relative flex items-start gap-8 mb-12 last:mb-0 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              transition={{ duration: 0.6, delay: dayIndex * 0.1 }}
+              className="card-elegant p-6 md:p-8"
             >
-              {/* Timeline Node */}
-              <div className="absolute left-4 md:left-1/2 w-8 h-8 -translate-x-1/2 bg-burgundy rounded-full flex items-center justify-center shadow-elegant z-10">
-                <Sparkles className="w-4 h-4 text-gold" />
+              {/* Date Header */}
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gold/20">
+                <div className="w-12 h-12 bg-burgundy/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-6 h-6 text-burgundy" />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl text-burgundy font-semibold">
+                    {day.date}
+                  </h3>
+                  <div className="flex items-center gap-1.5 text-muted-foreground text-sm mt-1">
+                    <MapPin className="w-3.5 h-3.5 text-gold" />
+                    <span>{day.venue}</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Content Card */}
-              <div
-                className={`ml-16 md:ml-0 md:w-[calc(50%-2rem)] ${
-                  index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8 md:text-left"
-                }`}
-              >
-                <div className="card-elegant p-6 md:p-8">
-                  <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold mb-1">
-                    {event.name}
-                  </h3>
-                  {event.subtitle && (
-                    <p className="text-burgundy/70 font-body text-sm mb-3">
-                      {event.subtitle}
-                    </p>
-                  )}
-                  
-                  <div className={`flex flex-wrap gap-4 mb-4 ${
-                    index % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                  }`}>
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <Calendar className="w-4 h-4 text-gold" />
-                      <span>{event.date}</span>
+              {/* Events List */}
+              <div className="space-y-4">
+                {day.events.map((event, eventIndex) => (
+                  <motion.div
+                    key={event.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: dayIndex * 0.1 + eventIndex * 0.05 }}
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-gold mt-2 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                    <div className="flex-1">
+                      <h4 className="font-display text-lg text-foreground font-medium">
+                        {event.name}
+                      </h4>
+                      <div className="flex items-center gap-1.5 text-gold text-sm mt-1">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{event.time}</span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <p className="text-foreground/70 font-body text-sm leading-relaxed">
-                    {event.description}
-                  </p>
-                </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Baraat Route Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-12"
+        >
+          <div className="relative bg-gradient-to-r from-burgundy/5 via-burgundy/10 to-burgundy/5 rounded-2xl p-6 md:p-8 border border-gold/30">
+            {/* Decorative corners */}
+            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold rounded-tl-lg" />
+            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold rounded-tr-lg" />
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold rounded-bl-lg" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold rounded-br-lg" />
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <PartyPopper className="w-6 h-6 text-burgundy" />
+              </div>
+              <div>
+                <h4 className="font-display text-xl md:text-2xl text-burgundy font-semibold mb-3">
+                  बारात निकासी
+                </h4>
+                <p className="text-foreground/80 font-body text-sm md:text-base leading-relaxed">
+                  बारात <span className="text-burgundy font-medium">शुक्रवार, 23 जनवरी 2026</span> को 
+                  <span className="text-gold font-medium"> सायं 5.15 बजे</span> विवाह स्थल से रवाना होकर 
+                  <span className="text-burgundy font-medium"> हाथोज मोड़, सिरसी रोड</span> से सजकर 
+                  <span className="text-burgundy font-medium"> सांगानेर महल गार्डन</span> के लिए प्रस्थान करेगी।
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
