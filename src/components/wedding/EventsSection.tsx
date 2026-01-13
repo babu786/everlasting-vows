@@ -14,44 +14,44 @@ const SparkleIcon = ({ className }: { className?: string }) => (
 
 const eventDays = [
   {
-    title: "Shri Ganesh Pujan",
-    subtitle: "(Peela Chawal)",
-    date: "Saturday, 17 January 2026",
-    description: "Shubh wedding ceremonies ki shuruaat Ganesh Pujan ke saath",
+    title: "श्री गणेश पूजन",
+    subtitle: "(पीला चावल)",
+    date: "शनिवार, 17 जनवरी 2026",
+    description: "शुभ विवाह समारोह की शुरुआत गणेश पूजन के साथ",
     timings: [
-      { event: "Ganesh Pujan", time: "8:30 AM" }
+      { event: "गणेश पूजन", time: "प्रातः 8.30 बजे" }
     ]
   },
   {
-    title: "Baan Sagdi, Baath, Lagan Tika",
-    subtitle: "Pratibhoj evam Mahila Sangeet",
-    date: "Wednesday, 21 January 2026",
-    description: "Traditional rasmon aur sangeet ki manohar shaam",
+    title: "बान सगड़ी, बाठ, लगन टीका",
+    subtitle: "प्रतिबोज एवं महिला संगीत",
+    date: "बुधवार, 21 जनवरी 2026",
+    description: "परंपरागत रस्मों और संगीत की मनोहर शाम",
     timings: [
-      { event: "Baath", time: "8:15 AM" },
-      { event: "Lagan Tika", time: "10:00 AM" },
-      { event: "Pratibhoj", time: "12:15 PM" },
-      { event: "Mahila Sangeet", time: "6:00 PM" }
+      { event: "बाठ", time: "प्रातः 8.15 बजे" },
+      { event: "लगन टीका", time: "प्रातः 10.00 बजे" },
+      { event: "प्रतिबोज", time: "दोपहर 12.15 बजे" },
+      { event: "महिला संगीत", time: "सायं 6.00 बजे" }
     ]
   },
   {
-    title: "Chak evam Haldi",
-    subtitle: "(Haldi Ceremony)",
-    date: "Thursday, 22 January 2026",
-    description: "Haldi ki rasam ke saath mangalmay taiyaariyan",
+    title: "चाक एवं हल्दी",
+    subtitle: "(हल्दी की रस्म)",
+    date: "गुरुवार, 22 जनवरी 2026",
+    description: "हल्दी की रस्म के साथ मंगलमय तैयारियां",
     timings: [
-      { event: "Chak", time: "10:00 AM" },
-      { event: "Haldi", time: "1:15 PM" }
+      { event: "चाक", time: "प्रातः 10.00 बजे" },
+      { event: "हल्दी", time: "दोपहर 1.15 बजे" }
     ]
   },
   {
-    title: "Vivah",
-    subtitle: "(Panigrahana Sanskar)",
-    date: "Friday, 23 January 2026",
-    description: "Shubh Lagna mein Vivah Sanskar",
+    title: "विवाह",
+    subtitle: "(पाणिग्रहण संस्कार)",
+    date: "शुक्रवार, 23 जनवरी 2026",
+    description: "शुभ लग्न में विवाह संस्कार",
     timings: [
-      { event: "Nikasi", time: "4:30 PM" },
-      { event: "Panigrahana Sanskar", time: "Shubh Lagna" }
+      { event: "निकासी", time: "सायं 4.30 बजे" },
+      { event: "पाणिग्रहण संस्कार", time: "रात्रि शुभ लग्नानुसार" }
     ]
   }
 ];
