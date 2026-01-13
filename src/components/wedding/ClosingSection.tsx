@@ -85,7 +85,7 @@ const ClosingSection = () => {
           className="mt-12 pt-8 border-t border-gold/20"
         >
           <p className="font-display text-3xl md:text-4xl text-gold">
-            Arjun & Priya
+            Tanishk & Ginni
           </p>
           <div className="flex items-center justify-center gap-3 mt-4">
             <span className="w-12 h-px bg-gold/40" />
@@ -102,7 +102,7 @@ const ClosingSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16 text-ivory/40 font-body text-xs tracking-wide"
         >
-          Made with love • February 2026
+          Made with love • January 2026
         </motion.p>
       </div>
     </section>

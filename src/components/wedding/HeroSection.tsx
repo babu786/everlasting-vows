@@ -33,7 +33,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.4 }}
         >
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy mb-2">
-            Arjun
+            Tanishk
           </h1>
           <div className="flex items-center justify-center gap-4 my-4">
             <span className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
@@ -41,7 +41,7 @@ const HeroSection = () => {
             <span className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
           </div>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy">
-            Priya
+            Ginni
           </h1>
         </motion.div>
 
@@ -67,7 +67,7 @@ const HeroSection = () => {
               Save the Date
             </p>
             <p className="font-display text-3xl md:text-4xl text-ivory font-semibold">
-              15th February, 2026
+              23rd January, 2026
             </p>
           </div>
         </motion.div>
