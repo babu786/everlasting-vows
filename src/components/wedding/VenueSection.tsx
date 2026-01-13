@@ -10,8 +10,8 @@ const venues = [
     address: "माताजी के मंदिर के पास, फूलबाग, जयपुर",
     events: ["गणेश पूजन", "भात", "लगन टीका", "प्रतिबोज", "महिला संगीत", "चाक", "हल्दी"],
     dates: "17, 21-22 जनवरी 2026",
-    mapLink: "https://maps.google.com/?q=Phool+Bagh+Jaipur",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.8873051123095!2d75.78714431504573!3d26.912434983128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db40987bfffff%3A0x5f8e0f0f0f0f0f0f!2sPhool%20Bagh%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
+    mapLink: "https://maps.app.goo.gl/pU7wiEuiTCpvaoTR6",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.0!2d75.7871!3d26.9124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzQ0LjgiTiA3NcKwNDcnMTMuNiJF!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
   },
   {
     name: "सांगानेर महल गार्डन",
