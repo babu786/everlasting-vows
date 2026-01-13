@@ -58,7 +58,7 @@ const eventDays = [
 
 const EventsSection = () => {
   return (
-    <section className="section-padding bg-background relative">
+    <section className="section-padding bg-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div
@@ -68,6 +68,12 @@ const EventsSection = () => {
           }}
         />
       </div>
+
+      {/* Decorative Corners */}
+      <div className="absolute top-6 left-6 w-20 h-20 border-t-2 border-l-2 border-gold/40 rounded-tl-xl" />
+      <div className="absolute top-6 right-6 w-20 h-20 border-t-2 border-r-2 border-gold/40 rounded-tr-xl" />
+      <div className="absolute bottom-6 left-6 w-20 h-20 border-b-2 border-l-2 border-gold/40 rounded-bl-xl" />
+      <div className="absolute bottom-6 right-6 w-20 h-20 border-b-2 border-r-2 border-gold/40 rounded-br-xl" />
 
       <div className="max-w-5xl mx-auto relative">
         {/* Section Header */}
