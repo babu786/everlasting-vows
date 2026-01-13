@@ -26,7 +26,7 @@ const venues = [
 
 const VenueSection = () => {
   return (
-    <section className="section-padding bg-cream dark:bg-background relative overflow-hidden">
+    <section className="section-padding bg-cream relative overflow-hidden">
       {/* Henna Pattern Background */}
       <div className="absolute inset-0 pointer-events-none text-gold overflow-hidden">
         <HennaPattern className="w-80 h-80 -bottom-20 -right-20" opacity={0.05} />
@@ -35,12 +35,12 @@ const VenueSection = () => {
 
       {/* Decorative elements with pulsing */}
       <motion.div 
-        className="absolute top-20 right-0 w-96 h-96 bg-gold/5 dark:bg-candle-glow/8 rounded-full blur-3xl"
+        className="absolute top-20 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"
         animate={{ scale: [1, 1.2, 1], opacity: [0.05, 0.1, 0.05] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute bottom-20 left-0 w-96 h-96 bg-rose/20 dark:bg-burgundy/15 rounded-full blur-3xl"
+        className="absolute bottom-20 left-0 w-96 h-96 bg-rose/20 rounded-full blur-3xl"
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
@@ -57,7 +57,7 @@ const VenueSection = () => {
           <span className="text-gold text-sm tracking-[0.3em] uppercase font-body">
             समारोह स्थल
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy dark:text-gold mt-4 font-semibold">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-burgundy mt-4 font-semibold">
             स्थान विवरण
           </h2>
           <div className="divider-ornament max-w-xs mx-auto mt-6">
@@ -95,11 +95,11 @@ const VenueSection = () => {
                 <div className="p-6 md:p-8">
                   {/* Venue Header */}
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-burgundy/10 dark:bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-burgundy dark:text-gold" />
+                    <div className="w-12 h-12 bg-burgundy/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-burgundy" />
                     </div>
                     <div>
-                      <h3 className="font-display text-2xl md:text-3xl text-burgundy dark:text-gold font-semibold">
+                      <h3 className="font-display text-2xl md:text-3xl text-burgundy font-semibold">
                         {venue.name}
                       </h3>
                       <p className="text-muted-foreground font-body text-sm">
@@ -116,7 +116,7 @@ const VenueSection = () => {
                   {/* Date Badge */}
                   <div className="flex items-center gap-2 mb-4">
                     <Calendar className="w-4 h-4 text-gold" />
-                    <span className="text-sm text-burgundy dark:text-gold-light font-medium">{venue.dates}</span>
+                    <span className="text-sm text-burgundy font-medium">{venue.dates}</span>
                   </div>
 
                   {/* Events at this venue */}
@@ -128,7 +128,7 @@ const VenueSection = () => {
                       {venue.events.map((event) => (
                         <span
                           key={event}
-                          className="inline-flex items-center gap-1 px-3 py-1 bg-gold/10 dark:bg-gold/15 text-burgundy dark:text-gold-light text-xs font-body rounded-full border border-gold/20"
+                          className="inline-flex items-center gap-1 px-3 py-1 bg-gold/10 text-burgundy text-xs font-body rounded-full border border-gold/20"
                         >
                           <Sparkles className="w-3 h-3 text-gold" />
                           {event}

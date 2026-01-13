@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  // Enable smooth theme transitions
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
@@ -66,9 +65,6 @@ export default {
         },
         blush: "hsl(var(--blush))",
         rose: "hsl(var(--rose))",
-        // Dark mode specific colors
-        starlight: "hsl(var(--starlight))",
-        "candle-glow": "hsl(var(--candle-glow))",
       },
       borderRadius: {
         lg: "var(--radius)",

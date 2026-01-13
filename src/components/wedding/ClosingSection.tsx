@@ -18,7 +18,7 @@ const ClosingSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-burgundy dark:bg-gradient-to-b dark:from-burgundy dark:to-background relative overflow-hidden">
+    <section className="section-padding bg-burgundy relative overflow-hidden">
       {/* Circle Pattern Background */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

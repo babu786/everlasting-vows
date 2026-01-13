@@ -28,7 +28,7 @@ const HeroSection = () => {
           opacity
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-ivory/30 via-ivory/50 to-ivory/90 dark:from-background/60 dark:via-background/70 dark:to-background/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ivory/30 via-ivory/50 to-ivory/90" />
       </motion.div>
 
       {/* Layer 2: Paisley Patterns (medium speed) */}
@@ -70,7 +70,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy dark:text-gold mb-2">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy mb-2">
             <SplitText text="Tanishk" staggerDelay={0.05} />
           </h1>
           <div className="flex items-center justify-center gap-4 my-4">
@@ -95,7 +95,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
             />
           </div>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy dark:text-gold">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-burgundy">
             <SplitText text="Ginni" staggerDelay={0.05} />
           </h1>
         </motion.div>
@@ -105,7 +105,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="font-display text-xl md:text-2xl text-burgundy-light dark:text-gold-light italic mt-8 mb-10"
+          className="font-display text-xl md:text-2xl text-burgundy-light italic mt-8 mb-10"
         >
           "Two souls, one journey"
         </motion.p>

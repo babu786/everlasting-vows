@@ -52,10 +52,6 @@
     --blush: 20 40% 92%;
     --rose: 350 40% 85%;
 
-    /* Light mode defaults for dark-specific colors */
-    --candle-glow: 35 100% 60%;
-    --starlight: 220 25% 85%;
-
     /* Fonts */
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -67,47 +63,30 @@
   }
 
   .dark {
-    /* Evening Reception - Candlelit Theme */
-    --background: 25 30% 5%;
-    --foreground: 40 35% 92%;
+    --background: 30 20% 8%;
+    --foreground: 40 30% 95%;
 
-    --card: 25 25% 9%;
-    --card-foreground: 40 35% 92%;
+    --card: 30 15% 12%;
+    --card-foreground: 40 30% 95%;
 
-    --popover: 25 30% 5%;
-    --popover-foreground: 40 35% 92%;
+    --popover: 30 20% 8%;
+    --popover-foreground: 40 30% 95%;
 
-    /* Gold becomes primary in dark mode */
-    --primary: 42 85% 58%;
-    --primary-foreground: 25 30% 5%;
+    --primary: 42 75% 55%;
+    --primary-foreground: 30 20% 8%;
 
-    --secondary: 25 20% 14%;
-    --secondary-foreground: 40 35% 92%;
+    --secondary: 30 15% 18%;
+    --secondary-foreground: 40 30% 95%;
 
-    --muted: 25 18% 15%;
-    --muted-foreground: 40 25% 60%;
+    --muted: 30 15% 18%;
+    --muted-foreground: 40 20% 65%;
 
-    --accent: 42 85% 58%;
-    --accent-foreground: 25 30% 5%;
+    --accent: 42 75% 55%;
+    --accent-foreground: 30 20% 8%;
 
-    --border: 25 20% 18%;
-    --input: 25 20% 18%;
-    --ring: 42 85% 58%;
-
-    /* Enhanced Wedding Colors for Dark Mode */
-    --gold: 42 90% 60%;
-    --gold-light: 42 80% 70%;
-    --gold-dark: 42 85% 48%;
-    --ivory: 40 35% 92%;
-    --cream: 25 25% 12%;
-    --burgundy: 350 50% 42%;
-    --burgundy-light: 350 45% 55%;
-    --blush: 350 30% 20%;
-    --rose: 350 35% 25%;
-
-    /* Dark mode specific */
-    --candle-glow: 35 100% 60%;
-    --starlight: 220 25% 85%;
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 42 75% 55%;
   }
 }
 
@@ -125,25 +104,8 @@
     font-family: var(--font-body);
   }
 
-  /* Smooth theme transition */
-  *, *::before, *::after {
-    transition: background-color 0.3s ease, 
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-  }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-  }
-
-  /* Enhanced dark mode effects */
-  .dark .card-elegant {
-    box-shadow: 0 0 30px rgba(218, 165, 32, 0.08),
-                0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .dark .image-frame {
-    box-shadow: 0 0 25px rgba(218, 165, 32, 0.15);
   }
 }
 

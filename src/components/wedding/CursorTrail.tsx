@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useTheme } from "next-themes";
 
 interface TrailPoint {
   id: number;
@@ -11,12 +10,9 @@ interface TrailPoint {
 
 const CursorTrail = () => {
   const isMobile = useIsMobile();
-  const { theme } = useTheme();
   const [trail, setTrail] = useState<TrailPoint[]>([]);
   const idCounter = useRef(0);
   const throttleRef = useRef(false);
-
-  const isDark = theme === "dark";
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     // Throttle to ~60fps
@@ -64,11 +60,6 @@ const CursorTrail = () => {
   // Don't render on mobile
   if (isMobile) return null;
 
-  // Color based on theme - silver starlight in dark mode, gold in light mode
-  const glowHsl = isDark 
-    ? "220, 25%, 85%" 
-    : "42, 75%, 55%";
-
   return (
     <div className="fixed inset-0 pointer-events-none z-[99]">
       <AnimatePresence>
@@ -102,12 +93,12 @@ const CursorTrail = () => {
           >
             {/* Inner glow */}
             <div 
-              className={`w-full h-full rounded-full ${isDark ? 'bg-starlight' : 'bg-gold'}`}
+              className="w-full h-full rounded-full bg-gold"
               style={{
                 boxShadow: `
-                  0 0 ${4 + index}px hsl(${glowHsl}),
-                  0 0 ${8 + index * 2}px hsla(${glowHsl}, 0.6),
-                  0 0 ${12 + index * 3}px hsla(${glowHsl}, 0.3)
+                  0 0 ${4 + index}px hsl(var(--gold)),
+                  0 0 ${8 + index * 2}px hsl(var(--gold) / 0.6),
+                  0 0 ${12 + index * 3}px hsl(var(--gold) / 0.3)
                 `,
               }}
             />
@@ -117,10 +108,10 @@ const CursorTrail = () => {
 
       {/* Subtle sparkle particles at cursor position */}
       <AnimatePresence>
-        {trail.length > 0 && trail.slice(-3).map((point) => (
+        {trail.length > 0 && trail.slice(-3).map((point, i) => (
           <motion.div
             key={`sparkle-${point.id}`}
-            className={`absolute w-1 h-1 rounded-full ${isDark ? 'bg-gold-light' : 'bg-gold-light'}`}
+            className="absolute w-1 h-1 bg-gold-light rounded-full"
             style={{
               left: point.x + (Math.random() - 0.5) * 20,
               top: point.y + (Math.random() - 0.5) * 20,
