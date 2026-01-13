@@ -11,71 +11,69 @@ interface TimeLeft {
 }
 
 // Flip Card Component for individual digits
-const FlipCard = ({ digit, label }: { digit: string; label: string }) => {
-  const [displayDigit, setDisplayDigit] = useState(digit);
+const FlipCard = ({ digit }: { digit: string }) => {
+  const [prevDigit, setPrevDigit] = useState(digit);
   const [isFlipping, setIsFlipping] = useState(false);
-  const prevDigit = useRef(digit);
 
   useEffect(() => {
-    if (digit !== prevDigit.current) {
+    if (digit !== prevDigit && !isFlipping) {
       setIsFlipping(true);
+      
       const timer = setTimeout(() => {
-        setDisplayDigit(digit);
+        setPrevDigit(digit);
         setIsFlipping(false);
-        prevDigit.current = digit;
-      }, 300);
+      }, 600);
+      
       return () => clearTimeout(timer);
     }
-  }, [digit]);
+  }, [digit, prevDigit, isFlipping]);
 
   return (
-    <div className="relative" style={{ perspective: "400px" }}>
+    <div className="relative w-8 md:w-14 lg:w-16" style={{ perspective: "400px" }}>
       <div className="relative w-full h-16 md:h-24 lg:h-28">
-        {/* Top Half (Static) */}
-        <div className="absolute inset-x-0 top-0 h-1/2 bg-burgundy rounded-t-lg overflow-hidden border-b border-burgundy-light/20">
+        {/* Top Half (Static) - Shows current digit */}
+        <div className="absolute inset-x-0 top-0 h-1/2 bg-burgundy rounded-t-lg overflow-hidden border-b border-burgundy-light/20 shadow-lg">
           <div className="absolute inset-0 flex items-end justify-center pb-0">
             <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none translate-y-1/2">
-              {displayDigit}
+              {digit}
             </span>
           </div>
         </div>
 
-        {/* Bottom Half (Static) */}
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-burgundy/90 rounded-b-lg overflow-hidden">
+        {/* Bottom Half (Static) - Shows current digit */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-burgundy/90 rounded-b-lg overflow-hidden shadow-lg">
           <div className="absolute inset-0 flex items-start justify-center pt-0">
             <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none -translate-y-1/2">
-              {displayDigit}
+              {digit}
             </span>
           </div>
         </div>
 
         {/* Flip Animation */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isFlipping && (
             <>
-              {/* Top flipping down */}
+              {/* Top flipping down - shows OLD digit */}
               <motion.div
-                className="absolute inset-x-0 top-0 h-1/2 bg-burgundy rounded-t-lg overflow-hidden origin-bottom"
+                className="absolute inset-x-0 top-0 h-1/2 bg-burgundy rounded-t-lg overflow-hidden origin-bottom z-20 shadow-lg"
                 initial={{ rotateX: 0 }}
                 animate={{ rotateX: -90 }}
-                exit={{ rotateX: -90 }}
                 transition={{ duration: 0.3, ease: "easeIn" }}
                 style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
               >
                 <div className="absolute inset-0 flex items-end justify-center pb-0">
                   <span className="font-display text-3xl md:text-5xl lg:text-6xl text-ivory font-bold leading-none translate-y-1/2">
-                    {prevDigit.current}
+                    {prevDigit}
                   </span>
                 </div>
               </motion.div>
 
-              {/* Bottom flipping up to reveal new number */}
+              {/* Bottom flipping up - reveals NEW digit */}
               <motion.div
-                className="absolute inset-x-0 bottom-0 h-1/2 bg-burgundy/90 rounded-b-lg overflow-hidden origin-top"
+                className="absolute inset-x-0 bottom-0 h-1/2 bg-burgundy/90 rounded-b-lg overflow-hidden origin-top z-20 shadow-lg"
                 initial={{ rotateX: 90 }}
                 animate={{ rotateX: 0 }}
-                exit={{ rotateX: 0 }}
-                transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+                transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
                 style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
               >
                 <div className="absolute inset-0 flex items-start justify-center pt-0">
@@ -171,14 +169,8 @@ const CountdownTimer = () => {
             >
               {/* Flip Cards Container */}
               <div className="flex justify-center gap-1 md:gap-2 mb-3">
-                <FlipCard 
-                  digit={String(unit.value).padStart(2, "0")[0]} 
-                  label={unit.label} 
-                />
-                <FlipCard 
-                  digit={String(unit.value).padStart(2, "0")[1]} 
-                  label={unit.label} 
-                />
+                <FlipCard digit={String(unit.value).padStart(2, "0")[0]} />
+                <FlipCard digit={String(unit.value).padStart(2, "0")[1]} />
               </div>
               
               {/* Label */}
