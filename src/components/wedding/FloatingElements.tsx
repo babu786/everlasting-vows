@@ -1,14 +1,32 @@
 import { motion } from "framer-motion";
 
 const FloatingElements = () => {
-  // Flower petals configuration
-  const petals = Array.from({ length: 12 }, (_, i) => ({
+  // Mixed flower petals - cherry blossoms, marigolds, and lotus
+  const petals = Array.from({ length: 10 }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
     delay: Math.random() * 5,
     duration: 8 + Math.random() * 4,
     size: 10 + Math.random() * 15,
+    type: i % 3 === 0 ? "marigold" : i % 3 === 1 ? "lotus" : "blossom",
   }));
+
+  // Peacock feather configuration
+  const feathers = [
+    { id: 1, left: "15%", delay: 2 },
+    { id: 2, left: "85%", delay: 7 },
+  ];
+
+  const getPetalEmoji = (type: string) => {
+    switch (type) {
+      case "marigold":
+        return "🌼";
+      case "lotus":
+        return "🪷";
+      default:
+        return "🌸";
+    }
+  };
 
   // Diyas configuration
   const diyas = [
@@ -20,11 +38,14 @@ const FloatingElements = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-      {/* Floating Flower Petals */}
+      {/* Floating Flower Petals - Mixed varieties */}
       {petals.map((petal) => (
         <motion.div
           key={petal.id}
-          className="absolute text-rose opacity-60"
+          className={`absolute opacity-60 ${
+            petal.type === "marigold" ? "text-amber-500" : 
+            petal.type === "lotus" ? "text-pink-400" : "text-rose"
+          }`}
           style={{
             left: petal.left,
             fontSize: petal.size,
@@ -47,7 +68,35 @@ const FloatingElements = () => {
             },
           }}
         >
-          🌸
+          {getPetalEmoji(petal.type)}
+        </motion.div>
+      ))}
+
+      {/* Floating Peacock Feathers */}
+      {feathers.map((feather) => (
+        <motion.div
+          key={`feather-${feather.id}`}
+          className="absolute text-2xl md:text-3xl opacity-40"
+          style={{ left: feather.left }}
+          initial={{ top: "-10%", rotate: -20 }}
+          animate={{
+            top: "110%",
+            rotate: [-20, 20, -20],
+            x: [0, 20, -20, 0],
+          }}
+          transition={{
+            duration: 15,
+            delay: feather.delay,
+            repeat: Infinity,
+            ease: "linear",
+            rotate: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+        >
+          🪶
         </motion.div>
       ))}
 
