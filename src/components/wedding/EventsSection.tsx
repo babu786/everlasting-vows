@@ -225,13 +225,13 @@ const EventsSection = () => {
               </div>
               <div>
                 <h4 className="font-display text-xl md:text-2xl text-burgundy font-semibold mb-3">
-                  Baraat Nikasi
+                  बारात निकासी
                 </h4>
                 <p className="text-foreground/80 font-body text-sm md:text-base leading-relaxed">
-                  Baraat <span className="text-burgundy font-medium">Friday, 23 January 2026</span> ko 
-                  <span className="text-gold font-medium"> shaam 5:15 baje</span> vivah sthal se rawana hokar 
-                  <span className="text-burgundy font-medium"> Hathoj Mod, Sirsi Road</span> se sajkar 
-                  <span className="text-burgundy font-medium"> Sanganer Mahal Garden</span> ke liye prasthan karegi.
+                  बारात <span className="text-burgundy font-medium">शुक्रवार, 23 जनवरी 2026</span> को 
+                  <span className="text-gold font-medium"> सायं 5.15 बजे</span> विवाह स्थल से रवाना होकर 
+                  <span className="text-burgundy font-medium"> हाथोज मोड़, सिरसी रोड</span> से सजकर 
+                  <span className="text-burgundy font-medium"> सांगानेर महल गार्डन</span> के लिए प्रस्थान करेगी।
                 </p>
               </div>
             </div>
